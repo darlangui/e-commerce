@@ -1,0 +1,133 @@
+/* HEADER */
+
+header .banner {
+  height: 40px;
+  background-color: var(--primary-dark);
+}
+
+header .banner .content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 500;
+  font-size: 1.4rem;
+  line-height: 150%;
+  color: var(--grayscale-white);
+}
+
+header .banner .content img {
+  margin-right: 8px;
+}
+
+header .nav {
+  height: 72px;
+  background-color: var(--primary-regular);
+}
+
+header .nav .content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .nav .content section {
+  display: flex;
+  align-items: center;
+}
+
+header .nav .content section.left ul {
+  margin-left: 80px;
+  display: flex;
+}
+
+header .nav .content section.left ul li {
+  font-weight: medium;
+  font-size: 1.6rem;
+  line-height: 150%;
+  color: var(--grayscale-g900);
+  
+  cursor: pointer;
+}
+
+header .nav .content section.left ul li + li {
+  margin-left: 24px;
+}
+
+header .nav .content section.right .hasProducts img.blank {
+  display: none;
+}
+
+header .nav .content section.right .blank img.hasProducts {
+  display: none;
+}
+
+header .nav .content section.right .cart img {
+  position: relative;
+  margin-right: 24px;
+  margin-bottom: -8px;
+}
+
+header .nav .content section.right button {
+  background-color: var(--grayscale-white);
+  width: 114px;
+  height: 48px;
+  color: var(--primary-dark);
+}
+
+header .nav .content section.right button:hover {
+  background-color: var(--grayscale-g900);
+}
+
+/* HERO BANNER */
+
+main .hero-banner .content {
+  margin-top: 40px;
+  background: var(--gradient-background);
+  height: 328px;
+  border-radius: 24px;
+  padding: 72px;
+  position: relative;
+}
+
+main .hero-banner .content h1 {
+  color: var(--grayscale-white);
+  margin-bottom: 12px;
+}
+
+main .hero-banner .content p {
+  font-weight: 400;
+  font-size: 1.8rem;
+  line-height: 160%;
+  color: var(--grayscale-g900);
+  width: 456px;
+  margin-bottom: 32px;
+}
+
+main .hero-banner .content span {
+  display: flex;
+  align-items: center;
+}
+
+main .hero-banner .content span strong {
+  margin-right: 8px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 1.8rem;
+  line-height: 135%;
+  color: var(--grayscale-white);
+}
+
+main .hero-banner .content .elements {
+  position: absolute;
+  top: 0;
+  right: 61px;
+}
+
+main .hero-banner .content .iphone {
+  position: absolute;
+  top: 25px;
+  right: 142px;
+  width: 322px;
+  height: 390px;
+}

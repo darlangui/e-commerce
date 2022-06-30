@@ -164,3 +164,15 @@ select {
   background-repeat: no-repeat;
   background-position: 222px 21px;
 }
+
+div.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div.content {
+  width: 100%;
+  max-width: 1216px;
+}
