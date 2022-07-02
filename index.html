@@ -19,7 +19,7 @@
       </div>
     </div>
 
-    <div class="nav container">
+    <div class="nav container isLogged isAdmin">
       <div class="content">
         <section class="left">
           <img src="./assets/logo-white.svg" alt="iShopping">
@@ -35,11 +35,33 @@
 
         <section class="right">
           <div class="cart hasProducts">
-            <img class="hasProducts" src="./assets/shopping-cart-filled-icon.svg" alt="shooping-cart">
-            <img class="blank" src="./assets/shopping-cart-icon.svg" alt="shooping-cart">
+            <a href="#">
+              <img class="hasProducts" src="./assets/shopping-cart-filled-icon.svg" alt="shooping-cart">
+              <img class="blank" src="./assets/shopping-cart-icon.svg" alt="shooping-cart">
+            </a>
+          </div>
+
+          <div class="settings">
+            <a href="#">
+              <img src="./assets/settings-icon.svg" alt="settings">
+            </a>
           </div>
 
           <button>Entrar</button>
+
+          <div class="profile">
+            <span id="profile">G</span>
+
+            <div id="dropdown" class="logout-dropdown">
+              <div class="logout-content">
+                <div class="section">
+                  <img src="./assets/logout-icon.svg" alt="logou">
+
+                  <span>Sair</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
       </div>
     </div>
@@ -61,5 +83,115 @@
       </div>
     </div>
   </main>
+
+  <article class="products">
+    <div class="container">
+      <div class="content">
+        <section class="category">
+          <h3>Informática</h3>
+    
+          <div class="category-products">
+            <div class="product">
+              <img src="./assets/product.png" alt="Product">
+    
+              <section class="content">
+                <p>Placa de Vídeo Asus GeForce RTX 3090 24GB - GDDR6X 384 bits ROG Strix Gaming</p>
+                
+                <span class="price">
+                  <strong>R$ 33.254,99</strong>
+
+                  <span class="discount">
+                    R$ 55.539,00
+                  </span>
+                </span>
+
+                <button class="tertiary">
+                  Comprar
+                </button>
+              </section>
+            </div>
+
+            <div class="product onSale">
+              <img src="./assets/product.png" alt="Product">
+    
+              <section class="content">
+                <p>Placa de Vídeo Asus GeForce RTX 3090 24GB - GDDR6X 384 bits ROG Strix Gaming</p>
+                
+                <span class="price">
+                  <strong>R$ 33.254,99</strong>
+                  
+                  <span class="discount">
+                    R$ 55.539,00
+                  </span>
+                </span>
+
+                <button class="tertiary">
+                  Comprar
+                </button>
+              </section>
+            </div>
+          </div>
+        </section>
+
+        <section class="category">
+          <h3>Celulares</h3>
+    
+          <div class="category-products">
+            <div class="product">
+              <img src="./assets/product.png" alt="Product">
+    
+              <section class="content">
+                <p>Placa de Vídeo Asus GeForce RTX 3090 24GB - GDDR6X 384 bits ROG Strix Gaming</p>
+                
+                <span class="price">
+                  <strong>R$ 33.254,99</strong>
+
+                  <span class="discount">
+                    R$ 55.539,00
+                  </span>
+                </span>
+
+                <button class="tertiary">
+                  Comprar
+                </button>
+              </section>
+            </div>
+
+            <div class="product onSale">
+              <img src="./assets/product.png" alt="Product">
+    
+              <section class="content">
+                <p>Placa de Vídeo Asus GeForce RTX 3090 24GB - GDDR6X 384 bits ROG Strix Gaming</p>
+                
+                <span class="price">
+                  <strong>R$ 33.254,99</strong>
+                  
+                  <span class="discount">
+                    R$ 55.539,00
+                  </span>
+                </span>
+
+                <button class="tertiary">
+                  Comprar
+                </button>
+              </section>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </article>
+
+  <footer>
+    <div class="footer container">
+      <div class="content">
+        <img src="./assets/logo-white.svg" alt="iShopping">
+
+        <p>iShopping 2022. Todos os direitos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./utils/handleProfileDropdown.js"></script>
 </body>
 </html>
