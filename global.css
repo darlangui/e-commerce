@@ -11,6 +11,7 @@
 
 html {
   font-size: 62.5%;
+  scroll-behavior: smooth;
   
   --primary-regular: #5024E1;
   --primary-dark: #3B0EC1;
