@@ -5,8 +5,6 @@ function listenProfileClick() {
   profile.addEventListener(
     'click',
     () => {
-      console.log('teste');
-
       if (dropdown.classList.contains('open')) {
         dropdown.classList.remove('open');
         dropdown.classList.add('close');

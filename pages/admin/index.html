@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iShopping</title>
+
+  <link rel="stylesheet" href="../../global.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container admin">
+    <div class="content">
+      <img src="../../assets/black-settings-icon.svg" alt="settings">
+      
+      <span>Sessão do administrador</span>
+    </div>
+  </div>
+
+  <div class="container header">
+    <div class="content">
+      <a href="../../index.html">
+        <img src="../../assets/logo-white.svg" alt="iShopping">
+      </a>
+
+      <div class="profile">
+        <span id="profile">G</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="container main">
+    <div class="content">
+      <header>
+        <h2>Lista de produtos</h2>
+
+        <section class="right">
+          <span>Total de 20 items</span>
+
+          <button id="openModal" class="primary">
+            <img src="../../assets/add-icon.svg" alt="add">
+          </button>
+        </section>
+      </header>
+
+      <div class="filters">
+        <div class="filter">
+          Informática
+        </div>
+
+        <div class="filter active">
+          Celulares
+        </div>
+
+        <div class="filter">
+          Móveis
+        </div>
+
+        <div class="filter">
+          Notebooks
+        </div>
+
+        <div class="filter">
+          Domésticos
+        </div>
+
+        <div class="filter">
+          Promoções
+        </div>
+      </div>
+
+      <div class="products">
+        <div class="product">
+          <form action="#">
+            <section class="image">
+              <div class="image-container">
+                <img src="../../assets/product.png" alt="product">
+              </div>
+              
+              <div class="input-container">
+                <input type="file" name="imageInput">
+              </div>
+            </section>
+
+            <section class="content">
+              <textarea class="title" name="title" placeholder="Nome do produto">Apple iPhone 13 Pro Max (256 GB) - Prateado - Desbloqueado com garantia</textarea>
+
+              <div class="price-container">
+                <input type="text" class="price" name="price" placeholder="R$ 0,00">
+                <input type="text" class="discount" name="discount" placeholder="R$ 0,00">
+              </div>
+
+              <div class="options">
+                <select name="category">
+                  <option value="informatica">Informática</option>
+                  <option value="informatica">Celulares</option>
+                  <option value="informatica">Móveis</option>
+                  <option value="informatica">Notebooks</option>
+                  <option value="informatica">Domésticos</option>
+                </select>
+
+                <button class="delete">
+                  <img src="../../assets/delete-icon.svg" alt="delete">
+                </button>
+
+                <button class="save">
+                  <img src="../../assets/check-icon.svg" alt="save">
+                </button>
+              </div>
+            </section>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <h3>Adicionar produto</h3>
+
+      <form action="#">
+        <div class="content">
+          <div class="input-container">
+            <label for="name">Nome:</label>
+            <input type="text" name="name" placeholder="Apple iPhone 13 Pro Max (256gb) - Prateado">
+          </div>
+  
+          <div class="input-container small">
+            <label for="price">Valor:</label>
+            <input type="text" name="price" placeholder="R$ 0,00">
+          </div>
+  
+          <div class="input-container small">
+            <label for="category">Categoria:</label>
+            <select name="category">
+              <option value="informatica">Informática</option>
+              <option value="informatica">Celulares</option>
+              <option value="informatica">Móveis</option>
+              <option value="informatica">Notebooks</option>
+              <option value="informatica">Domésticos</option>
+            </select>
+          </div>
+  
+          <div class="input-container small">
+            <label for="discount">Promoção (opcional):</label>
+            <input type="text" name="discount" placeholder="R$ 0,00">
+          </div>
+  
+          <div class="input-container small">
+            <label for="image">Imagem</label>
+            <input type="file" name="image">
+          </div>
+        </div>
+
+        <div class="buttons">
+          <button id="closeModal" class="secondary">Cancelar</button>
+
+          <button id="addProduct" type="submit" class="primary">Adicionar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="../../utils/handleModalProduct.js"></script>
+</body>
+</html>

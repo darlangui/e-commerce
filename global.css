@@ -145,6 +145,7 @@ div.input-container input[type=file] {
   background-image: url(./assets/image-icon.svg);
   background-repeat: no-repeat;
   background-position: 24px 16px;
+  cursor: pointer;
 }
 
 select {
@@ -164,6 +165,13 @@ select {
   background-image: url(./assets/select-icon.svg);
   background-repeat: no-repeat;
   background-position: 222px 21px;
+
+  transition: border 0.5s;
+  cursor: pointer;
+}
+
+select:hover {
+  border: 2px solid var(--primary-regular);
 }
 
 div.container {

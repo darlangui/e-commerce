@@ -244,7 +244,6 @@ main .hero-banner .content .iphone {
   align-items: center;
 
   width: 280px;
-  height: 385px;
   padding: 32px 24px 24px 24px;
   background-color: var(--grayscale-white);
   border: 2px solid var(--grayscale-g900);
