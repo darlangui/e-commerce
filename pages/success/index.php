@@ -17,7 +17,7 @@
       <h2>Compra concluida com sucesso 🤑</h2>
       <p>Obrigado por comprar conosco. Agora enquanto nós trabalhamos para sua compra chegar até você o mais rápido possível, que tal dar uma olhada em nosso site?</p>
       
-      <a href="../../index.html">
+      <a href="../../index.php">
         <button class="primary">Voltar ao site</button>
       </a>
     </div>

@@ -3,7 +3,6 @@ function listenAddProductClick() {
   const modal = document.getElementById('modal');
   const closeModal = document.getElementById('closeModal');
   const addProduct = document.getElementById('addProduct');
-
   openModal.addEventListener(
     'click',
     () => {

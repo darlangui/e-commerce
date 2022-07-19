@@ -1,3 +1,22 @@
+<?php 
+  session_start();
+  if(isset($_SESSION['user'])){
+    $con = mysqli_connect("localhost", "root", "", "ecommerce");
+
+    if(mysqli_connect_errno()){
+        echo "Erro :" .mysqli_connect_error();
+    }
+
+    $query = "SELECT produtos_id FROM cart ORDER BY user_id = '".$_SESSION['id']."'";
+    $result = $con->query($query);
+    while($row = mysqli_fetch_assoc($result)){                  
+      $products[] = $row['produtos_id']; 
+    }
+  }else{
+    header('Location: ../login');
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -12,12 +31,12 @@
 <body>
   <div class="container header">
     <div class="content">
-      <a href="../../index.html">
+      <a href="../../index.php">
         <img src="../../assets/logo-white.svg" alt="iShopping">
       </a>
 
       <div class="profile">
-        <span id="profile">G</span>
+        <span id="profile"> <?php if(isset($_SESSION['nome'])){ echo  substr($_SESSION['nome'], 0, 1);} ?> </span>
       </div>
     </div>
   </div>
@@ -26,39 +45,31 @@
     <div class="content">
       <section class="left">
         <h2>Carrinho</h2>
-
         <div class="products">
-          <div class="product">
-            <img class="product" src="../../assets/product.png" alt="product">
+        <?php
+          $query = "SELECT * FROM produtos ORDER BY id = '".$products[0]."'";
+          $result = $con->query($query);
+          while($row = mysqli_fetch_assoc($result)){  
+            echo " 
+            <div class='product'>
+              <img class='product' src='../../getImg.php?img={$row['img']}' alt='product'>
+              
 
-            <div class="product-content">
-              <p>Apple iPhone 13 Pro Max (256 GB) - Prateado - Desbloqueado com garantia</p>
+              <div class='product-content'>
+                <p>Apple iPhone 13 Pro Max (256 GB) - Prateado - Desbloqueado com garantia</p>
 
-              <span class="price">
-                <strong>R$ 7.899,00</strong>
+                <span class='price'>
+                  <strong>R$ 7.899,00</strong>
 
-                <span class="discount">R$ 0,00</span>
-              </span>
-            </div>
+                  <span class='discount'>R$ 0,00</span>
+                </span>
 
-            <img src="../../assets/remove-icon.svg" alt="remove">
-          </div>
+              </div>
 
-          <div class="product onSale">
-            <img class="product" src="../../assets/product.png" alt="product">
-
-            <div class="product-content">
-              <p>Apple iPhone 13 Pro Max (256 GB) - Prateado - Desbloqueado com garantia</p>
-
-              <span class="price">
-                <strong>R$ 7.899,00</strong>
-
-                <span class="discount">R$ 0,00</span>
-              </span>
-            </div>
-
-            <img src="../../assets/remove-icon.svg" alt="remove">
-          </div>
+              <img src='../../assets/remove-icon.svg' alt='remove'>
+            </div>";
+          }
+        ?>
         </div>
       </section>
 
@@ -90,7 +101,7 @@
             <h3>R$ 18.891,00</h3>
           </div>
 
-          <a href="../success/index.html">
+          <a href="../success/index.php">
             <button class="primary">Confirmar compra</button>
           </a>
         </div>

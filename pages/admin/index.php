@@ -10,6 +10,14 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <?php
+    session_start();
+    if(isset($_SESSION['usuario'])){
+        $nome = $_SESSION['usuario'];
+    }else{
+      header('Location: ../login');
+    }
+  ?>
   <div class="container admin">
     <div class="content">
       <img src="../../assets/black-settings-icon.svg" alt="settings">
@@ -25,7 +33,7 @@
       </a>
 
       <div class="profile">
-        <span id="profile">G</span>
+        <span id="profile"> <?php $letra =  substr($nome, 0, 1); echo $letra; ?> </span>
       </div>
     </div>
   </div>

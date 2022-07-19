@@ -10,6 +10,19 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <?php 
+    session_start();
+    $type = 'nav container';
+    echo $type;
+    $type = 'nav container';
+    if(isset($_SESSION['user'])){
+      if($_SESSION['user'] == 'adm'){
+        $type = 'nav container isAdmin';
+      }else{
+        $type = 'nav container isLogged';
+      }
+    }
+  ?>
   <header>
     <div class="banner container">
       <div class="content">
@@ -21,7 +34,7 @@
 
     <!--  Tags nav container: isLogged isAdmin -->
 
-    <div class="nav container">
+    <div class="<?php echo $type; ?>">
       <div class="content">
         <section class="left">
           <img src="./assets/logo-white.svg" alt="iShopping">
@@ -39,36 +52,51 @@
 
           <!--  Tags cart: hasProducts blank -->
 
-          <div class="cart hasProducts">
-            <a href="./pages/cart/index.html">
+          <div class="cart blank">
+            <a href="./pages/cart/index.php">
               <img class="hasProducts" src="./assets/shopping-cart-filled-icon.svg" alt="shooping-cart">
               <img class="blank" src="./assets/shopping-cart-icon.svg" alt="shooping-cart">
             </a>
           </div>
 
           <div class="settings">
-            <a href="./pages/admin/index.html">
+            <a href="./pages/admin/index.php">
               <img src="./assets/settings-icon.svg" alt="settings">
             </a>
           </div>
-
+          
           <button>
-            <a href="./pages/login/index.html">Entrar</a>
+            <a href="./pages/login/index.php">Entrar</a>
           </button>
+        
 
           <div class="profile">
-            <span id="profile">G</span>
+            <span id="profile"> <?php  if(isset($_SESSION['nome'])){ echo  substr($_SESSION['nome'], 0, 1);} ?>  </span>
 
             <div id="dropdown" class="logout-dropdown">
               <div class="logout-content">
                 <div class="section">
                   <img src="./assets/logout-icon.svg" alt="logou">
-
-                  <span>Sair</span>
+                    <form method="post">
+                      <input type="submit" name="sair" style="border: none;" id="sair" value="Sair">
+                    </form>
+                  <?php 
+                    if(isset($_POST['sair'])){
+                      if(isset($_SESSION['user'])){
+                        unset($_SESSION['user']);
+                        unset($_SESSION['email']);
+                        unset($_SESSION['senha']);
+                        unset($_SESSION['nome']);
+                        unset($_SESSION['id']);
+                        header('Location: index.php');
+                      } 
+                    }
+                  ?>
                 </div>
               </div>
             </div>
           </div>
+
         </section>
       </div>
     </div>

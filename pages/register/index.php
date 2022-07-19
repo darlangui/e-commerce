@@ -10,6 +10,16 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <?php
+    session_start();
+    if(isset($_SESSION['msg'])){
+        if($_SESSION['msg'] == true){
+          $cor = 'red';
+          session_destroy();
+          unset($_SESSION['msg']);
+        }
+    }
+  ?>
   <main>
     <section class="left">
       <a href="../../index.html" class="logo">
@@ -17,34 +27,34 @@
       </a>
 
       <div class="form">
-        <form action="#">
+        <form action="register.php" method="post">
           <h2>Descontos lhe esperam 🤑</h2>
   
           <div class="input-container">
-            <label for="email">Seu nome</label>
-            <input type="text" name="email" id="email" placeholder="Alfredo da Silva">
+            <label for="nome">Seu nome</label>
+            <input type="text" name="nome" id="nome" placeholder="Alfredo da Silva" required>
           </div>
   
           <div class="input-container">
             <label for="email">E-mail</label>
-            <input type="text" name="email" id="email" placeholder="email@email.com">
+            <input type="text" style="border-color: <?php echo $cor ?>;" name="email" id="email" placeholder="email@email.com" required>
           </div>
   
           <div class="input-container">
-            <label for="email">CPF</label>
-            <input type="text" name="email" id="email" placeholder="000.000.000-00">
+            <label for="cpf">CPF</label>
+            <input type="text" name="cpf" id="cpf" placeholder="000.000.000-00" minlength="11" maxlength="11" required>
           </div>
   
           <div class="input-container">
             <label for="password">Sua senha</label>
-            <input type="password" name="password" id="password" placeholder="Sua senha">
+            <input type="password" name="password" id="password" placeholder="Sua senha"  minlength="8" required>
           </div>
 
           <button class="primary" type="submit">Criar conta</button>
 
           <div class="redirect">
             <span>
-              Já possui uma conta? <a href="../login/index.html">Fazer login</a>
+              Já possui uma conta? <a href="../login/index.php">Fazer login</a>
             </span>
           </div>
         </form>

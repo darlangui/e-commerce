@@ -10,31 +10,41 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <?php
+    session_start();
+    if(isset($_COOKIE['status_login'])){
+        if($_COOKIE['status_login'] == 'true'){
+          $cor = 'red';
+          setcookie('status_login', 'false');
+        }
+    }
+  ?>
   <main>
     <section class="left">
-      <a href="../../index.html" class="logo">
+      <a href="../../index.php" class="logo">
         <img src="../../assets/logo.svg" alt="iShopping">
       </a>
 
       <div class="form">
-        <form action="#">
+        <form action="login.php" method="post">
           <h2>Bem vindo novamente 😎</h2>
   
           <div class="input-container">
             <label for="email">E-mail</label>
-            <input type="text" name="email" id="email" placeholder="email@email.com">
+            <input type="text" name="email" style="border-color: <?php echo $cor ?>;" id="email" placeholder="email@email" value="<?php if(isset($_SESSION['email'])){echo $_SESSION['email']; session_destroy(); unset($_SESSION['email']);} ?>" required>
           </div>
   
-          <div class="input-container">
+          <div class="input-container"> 
             <label for="password">Sua senha</label>
-            <input type="password" name="password" id="password" placeholder="Sua senha">
+            <input type="password" name="password" style="border-color: <?php echo $cor ?>;" id="password" placeholder="Sua senha" required>
+            <label for="email" style="color : red"> <br><br> <?php if(isset($cor)){echo 'E-mail ou senha incorretos!';} ?></label>
           </div>
 
           <button class="primary" type="submit">Entrar</button>
 
           <div class="redirect">
             <span>
-              Não possui uma conta? <a href="../register/index.html">Cadastre-se</a>
+              Não possui uma conta? <a href="../register/">Cadastre-se</a>
             </span>
           </div>
         </form>
