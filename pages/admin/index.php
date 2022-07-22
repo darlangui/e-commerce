@@ -13,8 +13,215 @@
   <script>
   </script>
   <?php
+    function createQuery($color, $cat){
+      $con = mysqli_connect("localhost", "root", "", "ecommerce");
+
+      if(mysqli_connect_errno()){
+        echo "Erro :" .mysqli_connect_error();
+      }
+      if($cat == null){
+        $query = "SELECT * FROM produtos";
+          $result = $con->query($query);
+          while($row = mysqli_fetch_assoc($result)){
+            $informatica = null; $celulares = null; $moveis = null; $notebooks = null; $domesticos = null;
+            switch($row['categoria']){
+            case 'informatica':
+              $informatica = 'selected';
+            break;
+            case 'celulares':
+              $celulares = 'selected';
+            break;
+            case 'moveis':
+              $moveis = 'selected';
+            break;
+            case 'notebooks':
+              $notebooks = 'selected';
+            break;
+            case 'domesticos':
+              $domesticos = 'selected';
+            break;
+            }
+            echo "<div class='product'>
+            <form action='alter.php' method='post' enctype='multipart/form-data' class='save'>
+              <input type='hidden' name='id' value='{$row['id']}'>
+              <section class='image'>
+                <div class='image-container'>
+                  <img src='../../photos/{$row['img']}' alt='product' style='border-color: $color;'>
+                </div>
+
+                <div class='input-container'>
+                  <input type='file' name='imageInput'>
+                </div>
+              </section>
+
+            <section class='content'>
+              <textarea class='title' name='title' placeholder='Nome do produto'>{$row['nome']}</textarea>
+
+              <div class='price-container'>
+                <input type='text' class='price' name='price' placeholder='R$ {$row['valor']}'>
+                <input type='text' class='discount' name='discount' placeholder='R$ {$row['promo']}'>
+              </div>
+
+              <div class='options'>
+                <select name='category'>
+                  <option value='informatica' $informatica>Informática</option>
+                  <option value='celulares' $celulares>Celulares</option>
+                  <option value='moveis' $moveis>Móveis</option>
+                  <option value='notebooks' $notebooks>Notebooks</option>
+                  <option value='domesticos' $domesticos>Domésticos</option>
+                </select>
+
+                <a class='delete option' href ='delete.php?id={$row['id']}'>
+                  <img src='../../assets/delete-icon.svg' alt='delete'>
+                </a>
+                
+                <button class='save option'>
+                  <img src='../../assets/check-icon.svg' alt='save'> 
+                </button>
+              </div>
+            </section>
+          </form>
+        </div>
+        ";
+      }
+      }else{
+        if($cat == 'promo'){
+          $query = "SELECT * FROM produtos WHERE promo != 0";
+          $result = $con->query($query);
+          while($row = mysqli_fetch_assoc($result)){
+            $informatica = null; $celulares = null; $moveis = null; $notebooks = null; $domesticos = null;
+            switch($row['categoria']){
+            case 'informatica':
+              $informatica = 'selected';
+            break;
+            case 'celulares':
+              $celulares = 'selected';
+            break;
+            case 'moveis':
+              $moveis = 'selected';
+            break;
+            case 'notebooks':
+              $notebooks = 'selected';
+            break;
+            case 'domesticos':
+              $domesticos = 'selected';
+            break;
+            }
+            echo "<div class='product'>
+            <form action='alter.php' method='post' enctype='multipart/form-data' class='save'>
+              <input type='hidden' name='id' value='{$row['id']}'>
+              <section class='image'>
+                <div class='image-container'>
+                  <img src='../../photos/{$row['img']}' alt='product' style='border-color: $color;'>
+                </div>
+
+                <div class='input-container'>
+                  <input type='file' name='imageInput'>
+                </div>
+              </section>
+
+            <section class='content'>
+              <textarea class='title' name='title' placeholder='Nome do produto'>{$row['nome']}</textarea>
+
+              <div class='price-container'>
+                <input type='text' class='price' name='price' placeholder='R$ {$row['valor']}'>
+                <input type='text' class='discount' name='discount' placeholder='R$ {$row['promo']}'>
+              </div>
+
+              <div class='options'>
+                <select name='category'>
+                  <option value='informatica' $informatica>Informática</option>
+                  <option value='celulares' $celulares>Celulares</option>
+                  <option value='moveis' $moveis>Móveis</option>
+                  <option value='notebooks' $notebooks>Notebooks</option>
+                  <option value='domesticos' $domesticos>Domésticos</option>
+                </select>
+
+                <a class='delete option' href ='delete.php?id={$row['id']}'>
+                  <img src='../../assets/delete-icon.svg' alt='delete'>
+                </a>
+                
+                <button class='save option'>
+                  <img src='../../assets/check-icon.svg' alt='save'> 
+                </button>
+              </div>
+            </section>
+          </form>
+        </div>
+        ";
+          }
+        }else{
+        $query = "SELECT * FROM produtos WHERE categoria = '$cat'";
+          $result = $con->query($query);
+          while($row = mysqli_fetch_assoc($result)){
+            $informatica = null; $celulares = null; $moveis = null; $notebooks = null; $domesticos = null;
+            switch($row['categoria']){
+            case 'informatica':
+              $informatica = 'selected';
+            break;
+            case 'celulares':
+              $celulares = 'selected';
+            break;
+            case 'moveis':
+              $moveis = 'selected';
+            break;
+            case 'notebooks':
+              $notebooks = 'selected';
+            break;
+            case 'domesticos':
+              $domesticos = 'selected';
+            break;
+            }
+            echo "<div class='product'>
+            <form action='alter.php' method='post' enctype='multipart/form-data' class='save'>
+              <input type='hidden' name='id' value='{$row['id']}'>
+              <section class='image'>
+                <div class='image-container'>
+                  <img src='../../photos/{$row['img']}' alt='product' style='border-color: $color;'>
+                </div>
+
+                <div class='input-container'>
+                  <input type='file' name='imageInput'>
+                </div>
+              </section>
+
+            <section class='content'>
+              <textarea class='title' name='title' placeholder='Nome do produto'>{$row['nome']}</textarea>
+
+              <div class='price-container'>
+                <input type='text' class='price' name='price' placeholder='R$ {$row['valor']}'>
+                <input type='text' class='discount' name='discount' placeholder='R$ {$row['promo']}'>
+              </div>
+
+              <div class='options'>
+                <select name='category'>
+                  <option value='informatica' $informatica>Informática</option>
+                  <option value='celulares' $celulares>Celulares</option>
+                  <option value='moveis' $moveis>Móveis</option>
+                  <option value='notebooks' $notebooks>Notebooks</option>
+                  <option value='domesticos' $domesticos>Domésticos</option>
+                </select>
+
+                <a class='delete option' href ='delete.php?id={$row['id']}'>
+                  <img src='../../assets/delete-icon.svg' alt='delete'>
+                </a>
+                
+                <button class='save option'>
+                  <img src='../../assets/check-icon.svg' alt='save'> 
+                </button>
+              </div>
+            </section>
+          </form>
+        </div>
+        ";
+          }
+      }
+    }
+      $con->close();
+    }
     session_start();
     if(isset($_SESSION['nome'])){
+        $cat = null;
         $nome = $_SESSION['nome'];
         $cont = 0;
         $color = null;
@@ -78,99 +285,36 @@
       </header>
 
       <div class="filters">
-        <form action="#">
-          <div class="filter">
-            <button type="submit">Informática</button>
+        <form action="#" method="post">
+          <div class="<?php if(isset($_POST['informatica'])){echo "filter active"; $cat = 'informatica';}else{ echo 'filter';} ?>">
+            <button type="submit" name="informatica">Informática</button>
           </div>
 
-          <div class="filter active">
-            <button type="submit">Celulares</button>
+          <div class="<?php if(isset($_POST['calulares'])){echo "filter active"; $cat = 'celulares';}else{ echo 'filter';} ?>">
+            <button type="submit" name="calulares">Celulares</button>
           </div>
 
-          <div class="filter">
-            <button type="submit">Móveis</button>
+          <div class="<?php if(isset($_POST['moveis'])){echo "filter active"; $cat = 'moveis';}else{ echo 'filter';} ?>">
+            <button type="submit" name="moveis">Móveis</button>
           </div>
 
-          <div class="filter">
-            <button type="submit">Notebooks</button>
+          <div class="<?php if(isset($_POST['notebooks'])){echo "filter active"; $cat = 'notebooks';}else{ echo 'filter';} ?>">
+            <button type="submit" name="notebooks">Notebooks</button>
           </div>
 
-          <div class="filter">
-            <button type="submit">Domésticos</button>
+          <div class="<?php if(isset($_POST['domesticos'])){echo "filter active"; $cat = 'domesticos';}else{ echo 'filter';} ?>">
+            <button type="submit" name="domesticos">Domésticos</button>
           </div>
 
-          <div class="filter">
-            <button type="submit">Promoções</button>
+          <div class="<?php if(isset($_POST['promo'])){echo "filter active"; $cat = 'promo';}else{ echo 'filter';} ?>">
+            <button type="submit" name ="promo">Promoções</button>
           </div>
         </form>
       </div>
       <div class="products">
-        <?php 
-        
-        $query = "SELECT * FROM produtos";
-        $result = $con->query($query);
-        while($row = mysqli_fetch_assoc($result)){
-          $informatica = null; $celulares = null; $moveis = null; $notebooks = null; $domesticos = null;
-          switch($row['categoria']){
-          case 'informatica':
-            $informatica = 'selected';
-          break;
-          case 'celulares':
-            $celulares = 'selected';
-          break;
-          case 'moveis':
-            $moveis = 'selected';
-          break;
-          case 'notebooks':
-            $notebooks = 'selected';
-          break;
-          case 'domesticos':
-            $domesticos = 'selected';
-          break;
-          }
-          echo "<div class='product'>
-          <form action='alter.php' method='post' enctype='multipart/form-data' class='save'>
-            <input type='hidden' name='id' value='{$row['id']}'>
-            <section class='image'>
-              <div class='image-container'>
-                <img src='../../photos/{$row['img']}' alt='product' style='border-color: $color;'>
-              </div>
-
-              <div class='input-container'>
-                <input type='file' name='imageInput'>
-              </div>
-            </section>
-
-          <section class='content'>
-            <textarea class='title' name='title' placeholder='Nome do produto'>{$row['nome']}</textarea>
-
-            <div class='price-container'>
-              <input type='text' class='price' name='price' placeholder='R$ {$row['valor']}'>
-              <input type='text' class='discount' name='discount' placeholder='R$ {$row['promo']}'>
-            </div>
-
-            <div class='options'>
-              <select name='category'>
-                <option value='informatica' $informatica>Informática</option>
-                <option value='celulares' $celulares>Celulares</option>
-                <option value='moveis' $moveis>Móveis</option>
-                <option value='notebooks' $notebooks>Notebooks</option>
-                <option value='domesticos' $domesticos>Domésticos</option>
-              </select>
-
-              <a class='delete option' href ='delete.php?id={$row['id']}'>
-                <img src='../../assets/delete-icon.svg' alt='delete'>
-              </a>
-              
-              <button class='save option'>
-                <img src='../../assets/check-icon.svg' alt='save'> 
-              </button>
-            </div>
-          </section>
-        </form>
-      </div>
-      ";}
-      ?> 
+        <?php
+          createQuery($color, $cat);
+        ?> 
       </div>
     </div>
   </div>

@@ -67,7 +67,12 @@
         
                     $caminho = "../../photos/" . $nomeimg; // define o caminho onde a imagem sera salva.
                     move_uploaded_file($img["tmp_name"], $caminho);
-    
+
+                    $query = "SELECT * FROM produtos WHERE id = '$id'";
+                    $result = $con->query($query);
+                    $row = mysqli_fetch_object($result);
+                    unlink("../../photos/".$row->img."");
+                    
                     $query = "UPDATE produtos SET nome='$nome', valor='$valor', categoria='$categoria', promo='$prom', img='$nomeimg' WHERE id = '$id'";
     
                     if($valor == null){

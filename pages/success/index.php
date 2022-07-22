@@ -8,6 +8,14 @@
 
   <link rel="stylesheet" href="../../global.css">
   <link rel="stylesheet" href="styles.css">
+  <?php 
+    session_start();
+    if(isset($_SESSION['user'])){
+
+    }else{
+      header('Location: ../login');
+    }
+  ?>
 </head>
 <body>
   <main>

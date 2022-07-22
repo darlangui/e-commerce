@@ -155,7 +155,7 @@
                 <div class="section">
                   <img src="./assets/logout-icon.svg" alt="logou">
                     <form method="post">
-                      <button id="logout" type="submit" class="sair" name='sair'>Sair</button>
+                      <button id="logout" type="submit" class="sair" name='sair'> Sair </button> 
                     </form>
                   <?php 
                     if(isset($_POST['sair'])){

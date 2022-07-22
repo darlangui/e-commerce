@@ -7,6 +7,10 @@
         if(mysqli_connect_errno()){
             echo "Erro :" .mysqli_connect_error();
         }
+        $query = "SELECT * FROM produtos WHERE id = '$id'";
+        $result = $con->query($query);
+        $row = mysqli_fetch_object($result);
+        unlink("../../photos/".$row->img."");
 
         $query = "DELETE FROM produtos WHERE id = '$id'";
 
