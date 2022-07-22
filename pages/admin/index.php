@@ -10,10 +10,35 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <script>
+  </script>
   <?php
     session_start();
-    if(isset($_SESSION['usuario'])){
-        $nome = $_SESSION['usuario'];
+    if(isset($_SESSION['nome'])){
+        $nome = $_SESSION['nome'];
+        $cont = 0;
+        $color = null;
+        $con = mysqli_connect("localhost", "root", "", "ecommerce");
+
+          if(mysqli_connect_errno()){
+            echo "Erro :" .mysqli_connect_error();
+          }
+          $query = "SELECT * FROM produtos";
+          $result = $con->query($query);
+          while($row = mysqli_fetch_assoc($result)){  
+            $cont++;
+          }
+
+        if(isset($_SESSION['msg'])){
+          if($_SESSION['msg'] ==  true){
+            $cor = 'red';
+            unset($_SESSION['msg']);
+          }
+        }
+        if(isset($_SESSION['msgalter'])){
+          $color = 'red';
+          unset($_SESSION['msgalter']);
+        }
     }else{
       header('Location: ../login');
     }
@@ -28,7 +53,7 @@
 
   <div class="container header">
     <div class="content">
-      <a href="../../index.html">
+      <a href="../../index.php">
         <img src="../../assets/logo-white.svg" alt="iShopping">
       </a>
 
@@ -44,10 +69,10 @@
         <h2>Lista de produtos</h2>
 
         <section class="right">
-          <span>Total de 20 items</span>
+          <span>Total de <?php echo $cont; ?> items</span>
 
-          <button id="openModal" class="primary">
-            <img src="../../assets/add-icon.svg" alt="add">
+          <button id="openModal" class="primary" style="background-color: <?php echo $cor ?>;">
+            <img src="../../assets/add-icon.svg" alt="add" >
           </button>
         </section>
       </header>
@@ -77,48 +102,71 @@
           Promoções
         </div>
       </div>
-
       <div class="products">
-        <div class="product">
-          <form action="#">
-            <section class="image">
-              <div class="image-container">
-                <img src="../../assets/product.png" alt="product">
+        <?php 
+        
+        $query = "SELECT * FROM produtos";
+        $result = $con->query($query);
+        while($row = mysqli_fetch_assoc($result)){
+          $informatica = null; $celulares = null; $moveis = null; $notebooks = null; $domesticos = null;
+          switch($row['categoria']){
+          case 'informatica':
+            $informatica = 'selected';
+          break;
+          case 'celulares':
+            $celulares = 'selected';
+          break;
+          case 'moveis':
+            $moveis = 'selected';
+          break;
+          case 'notebooks':
+            $notebooks = 'selected';
+          break;
+          case 'domesticos':
+            $domesticos = 'selected';
+          break;
+          }
+          echo "<div class='product'>
+          <form action='alter.php' method='post' enctype='multipart/form-data' class='save'>
+            <input type='hidden' name='id' value='{$row['id']}'>
+            <section class='image'>
+              <div class='image-container'>
+                <img src='../../photos/{$row['img']}' alt='product' style='border-color: $color;'>
               </div>
+
+              <div class='input-container'>
+                <input type='file' name='imageInput'>
+              </div>
+            </section>
+
+          <section class='content'>
+            <textarea class='title' name='title' placeholder='Nome do produto'>{$row['nome']}</textarea>
+
+            <div class='price-container'>
+              <input type='text' class='price' name='price' placeholder='R$ {$row['valor']}'>
+              <input type='text' class='discount' name='discount' placeholder='R$ {$row['promo']}'>
+            </div>
+
+            <div class='options'>
+              <select name='category'>
+                <option value='informatica' $informatica>Informática</option>
+                <option value='celulares' $celulares>Celulares</option>
+                <option value='moveis' $moveis>Móveis</option>
+                <option value='notebooks' $notebooks>Notebooks</option>
+                <option value='domesticos' $domesticos>Domésticos</option>
+              </select>
+
+              <a class='delete' href ='delete.php?id={$row['id']}'> <img src='../../assets/delete-icon.svg' alt='delete'> </a>
               
-              <div class="input-container">
-                <input type="file" name="imageInput">
-              </div>
-            </section>
-
-            <section class="content">
-              <textarea class="title" name="title" placeholder="Nome do produto">Apple iPhone 13 Pro Max (256 GB) - Prateado - Desbloqueado com garantia</textarea>
-
-              <div class="price-container">
-                <input type="text" class="price" name="price" placeholder="R$ 0,00">
-                <input type="text" class="discount" name="discount" placeholder="R$ 0,00">
-              </div>
-
-              <div class="options">
-                <select name="category">
-                  <option value="informatica">Informática</option>
-                  <option value="informatica">Celulares</option>
-                  <option value="informatica">Móveis</option>
-                  <option value="informatica">Notebooks</option>
-                  <option value="informatica">Domésticos</option>
-                </select>
-
-                <button class="delete">
-                  <img src="../../assets/delete-icon.svg" alt="delete">
-                </button>
-
-                <button class="save">
-                  <img src="../../assets/check-icon.svg" alt="save">
-                </button>
-              </div>
-            </section>
-          </form>
-        </div>
+              <button class='save'>
+                <img src='../../assets/check-icon.svg' alt='save'> 
+              </button>
+            </div>
+          </section>
+        </form>
+      </div>
+      ";}
+      ?> 
       </div>
     </div>
   </div>
@@ -128,45 +176,43 @@
   <div id="modal" class="modal off">
     <div class="modal-content">
       <h3>Adicionar produto</h3>
-
-      <form action="#">
+      <form action="admin.php" method="post" enctype="multipart/form-data">
         <div class="content">
           <div class="input-container">
             <label for="name">Nome:</label>
-            <input type="text" name="name" placeholder="Apple iPhone 13 Pro Max (256gb) - Prateado">
+            <input type="text" name="name" placeholder="Apple iPhone 13 Pro Max (256gb) - Prateado"  required>
           </div>
   
           <div class="input-container small">
             <label for="price">Valor:</label>
-            <input type="text" name="price" placeholder="R$ 0,00">
+            <input type="text" name="price" placeholder="R$ 0,00" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required>
           </div>
   
           <div class="input-container small">
             <label for="category">Categoria:</label>
-            <select name="category">
+            <select name="category" required>
               <option value="informatica">Informática</option>
-              <option value="informatica">Celulares</option>
-              <option value="informatica">Móveis</option>
-              <option value="informatica">Notebooks</option>
-              <option value="informatica">Domésticos</option>
+              <option value="celulares">Celulares</option>
+              <option value="moveis">Móveis</option>
+              <option value="notebooks">Notebooks</option>
+              <option value="domesticos">Domésticos</option>
             </select>
           </div>
   
           <div class="input-container small">
             <label for="discount">Promoção (opcional):</label>
-            <input type="text" name="discount" placeholder="R$ 0,00">
+            <input type="text" name="discount" placeholder="R$ 0,00" onkeypress="return event.charCode >= 48 && event.charCode <= 57" >
           </div>
   
           <div class="input-container small">
             <label for="image">Imagem</label>
-            <input type="file" name="image">
+            <input type="file" name="image" style="border-color: <?php echo $cor; ?>" required>
           </div>
         </div>
 
         <div class="buttons">
           <button id="closeModal" class="secondary">Cancelar</button>
-
-          <button id="addProduct" type="submit" class="primary">Adicionar</button>
+          <button type="submit" class="primary"> Adicionar </button>
         </div>
       </form>
     </div>

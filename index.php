@@ -11,14 +11,92 @@
 </head>
 <body>
   <?php 
+    $type = 'nav container';
+    $cart = 'cart blank';
+
+    function queryConnect($table){
+      $con = mysqli_connect("localhost", "root", "", "ecommerce");
+      if(mysqli_connect_errno()){
+        echo "Erro :" .mysqli_connect_error();
+      }
+
+      $query = "SELECT * FROM produtos WHERE categoria = '$table'";
+      $result = $con->query($query);
+      while($row = mysqli_fetch_assoc($result)){
+
+        if($row['promo'] == 0){
+          echo "
+            <form method='post' action='purchase.php'>
+              <div class='product'>
+                <input type='hidden' name='id' value='{$row['id']}'>
+                <img src='photos/{$row['img']}' alt='Product'>
+                <section class='content'>
+
+                  <p> {$row['nome']} </p>
+                    
+                  <span class='price'>
+                      <strong> R$ {$row['valor']} </strong>
+                  </span>
+
+                  <button class='tertiary'>
+                    Comprar
+                  </button>
+                </section>
+              </div>
+            </form>
+          ";
+        }else{
+          $valor_new = 0;
+          $valor_new = $row['valor'] - $row['promo'];
+          echo "
+            <form method='post' action='purchase.php'>
+              <div class='product onSale'>
+                <img src='photos/{$row['img']}' alt='Product'>
+                <input type='hidden' name='id' value='{$row['id']}'>
+                <section class='content'>
+
+                    <p>{$row['nome']}</p>
+                      
+                  <span class='price'>
+                    <strong>R$ {$valor_new}</strong>
+                  
+                    <span class='discount'>
+                      R$ {$row['valor']}
+                    </span>
+                  </span>
+
+                  <button class='tertiary'>
+                    Comprar
+                  </button>
+                </section>
+              </div>
+            </form>
+          ";
+        }
+      }
+      $con->close();
+    }
+
     session_start();
-    $type = 'nav container';
-    echo $type;
-    $type = 'nav container';
     if(isset($_SESSION['user'])){
       if($_SESSION['user'] == 'adm'){
-        $type = 'nav container isAdmin';
+        $type = 'nav container isLogged isAdmin';
       }else{
+        $con = mysqli_connect("localhost", "root", "", "ecommerce");
+
+        if(mysqli_connect_errno()){
+          echo "Erro :" .mysqli_connect_error();
+        }
+        $query = "SELECT * FROM cart WHERE user_id = '{$_SESSION['id']}'";
+        $result = $con->query($query);
+        $cont_cart = 0;
+        while($row = mysqli_fetch_assoc($result)){
+          $cont_cart++;
+        }
+        if($cont_cart != 0){
+          $cart = 'cart hasProducts';
+        }
+        $con->close();
         $type = 'nav container isLogged';
       }
     }
@@ -37,12 +115,11 @@
     <div class="<?php echo $type; ?>">
       <div class="content">
         <section class="left">
-          <img src="./assets/logo-white.svg" alt="iShopping">
-          
+          <img src="./assets/logo-white.svg" alt="iShopping">  
           <ul>
             <li onclick="window.scrollTo(0, 400)">Informática</li>
             <li onclick="window.scrollTo(0, 950)">Celulares</li>
-            <li onclick="window.scrollTo(0, 1500)">Televisões</li>
+            <li onclick="window.scrollTo(0, 1500)">Móveis</li>
             <li onclick="window.scrollTo(0, 2050)">Notebooks</li>
             <li onclick="window.scrollTo(0, 2600)">Doméstico</li>
           </ul>
@@ -52,7 +129,7 @@
 
           <!--  Tags cart: hasProducts blank -->
 
-          <div class="cart blank">
+          <div class="<?php echo $cart; ?>">
             <a href="./pages/cart/index.php">
               <img class="hasProducts" src="./assets/shopping-cart-filled-icon.svg" alt="shooping-cart">
               <img class="blank" src="./assets/shopping-cart-icon.svg" alt="shooping-cart">
@@ -78,7 +155,7 @@
                 <div class="section">
                   <img src="./assets/logout-icon.svg" alt="logou">
                     <form method="post">
-                      <input type="submit" name="sair" style="border: none;" id="sair" value="Sair">
+                      <input type="submit" class="sair" name='sair' value='Sair' style='border-color: none;'>
                     </form>
                   <?php 
                     if(isset($_POST['sair'])){
@@ -126,183 +203,38 @@
           <h3>Informática</h3>
     
           <div class="category-products">
-            <div class="product">
-              <img src="./assets/product.png" alt="Product">
-    
-              <section class="content">
-                <p>Placa de Vídeo Asus GeForce RTX 3090 24GB - GDDR6X 384 bits ROG Strix Gaming</p>
-                
-                <span class="price">
-                  <strong>R$ 33.254,99</strong>
-
-                  <span class="discount">
-                    R$ 55.539,00
-                  </span>
-                </span>
-
-                <button class="tertiary">
-                  Comprar
-                </button>
-              </section>
-            </div>
-
-            <div class="product onSale">
-              <img src="./assets/product.png" alt="Product">
-    
-              <section class="content">
-                <p>Placa de Vídeo Asus GeForce RTX 3090 24GB - GDDR6X 384 bits ROG Strix Gaming</p>
-                
-                <span class="price">
-                  <strong>R$ 33.254,99</strong>
-                  
-                  <span class="discount">
-                    R$ 55.539,00
-                  </span>
-                </span>
-
-                <button class="tertiary">
-                  Comprar
-                </button>
-              </section>
-            </div>
+          <?php 
+            queryConnect('informatica');
+          ?>
           </div>
         </section>
 
         <section class="category">
           <h3>Celulares</h3>
-    
+              
           <div class="category-products">
-            <div class="product">
-              <img src="./assets/product.png" alt="Product">
-    
-              <section class="content">
-                <p>Placa de Vídeo Asus GeForce RTX 3090 24GB - GDDR6X 384 bits ROG Strix Gaming</p>
-                
-                <span class="price">
-                  <strong>R$ 33.254,99</strong>
-
-                  <span class="discount">
-                    R$ 55.539,00
-                  </span>
-                </span>
-
-                <button class="tertiary">
-                  Comprar
-                </button>
-              </section>
-            </div>
-
-            <div class="product onSale">
-              <img src="./assets/product.png" alt="Product">
-    
-              <section class="content">
-                <p>Placa de Vídeo Asus GeForce RTX 3090 24GB - GDDR6X 384 bits ROG Strix Gaming</p>
-                
-                <span class="price">
-                  <strong>R$ 33.254,99</strong>
-                  
-                  <span class="discount">
-                    R$ 55.539,00
-                  </span>
-                </span>
-
-                <button class="tertiary">
-                  Comprar
-                </button>
-              </section>
-            </div>
+            <?php 
+              queryConnect('celulares');
+            ?>
           </div>
         </section>
 
         <section class="category">
-          <h3>Televisões</h3>
-    
+          <h3>Móveis</h3>
           <div class="category-products">
-            <div class="product">
-              <img src="./assets/product.png" alt="Product">
-    
-              <section class="content">
-                <p>Placa de Vídeo Asus GeForce RTX 3090 24GB - GDDR6X 384 bits ROG Strix Gaming</p>
-                
-                <span class="price">
-                  <strong>R$ 33.254,99</strong>
-
-                  <span class="discount">
-                    R$ 55.539,00
-                  </span>
-                </span>
-
-                <button class="tertiary">
-                  Comprar
-                </button>
-              </section>
-            </div>
-
-            <div class="product onSale">
-              <img src="./assets/product.png" alt="Product">
-    
-              <section class="content">
-                <p>Placa de Vídeo Asus GeForce RTX 3090 24GB - GDDR6X 384 bits ROG Strix Gaming</p>
-                
-                <span class="price">
-                  <strong>R$ 33.254,99</strong>
-                  
-                  <span class="discount">
-                    R$ 55.539,00
-                  </span>
-                </span>
-
-                <button class="tertiary">
-                  Comprar
-                </button>
-              </section>
-            </div>
+          <?php 
+              queryConnect('moveis');
+          ?>
           </div>
         </section>
 
         <section class="category">
           <h3>Notebooks</h3>
-    
+              
           <div class="category-products">
-            <div class="product">
-              <img src="./assets/product.png" alt="Product">
-    
-              <section class="content">
-                <p>Placa de Vídeo Asus GeForce RTX 3090 24GB - GDDR6X 384 bits ROG Strix Gaming</p>
-                
-                <span class="price">
-                  <strong>R$ 33.254,99</strong>
-
-                  <span class="discount">
-                    R$ 55.539,00
-                  </span>
-                </span>
-
-                <button class="tertiary">
-                  Comprar
-                </button>
-              </section>
-            </div>
-
-            <div class="product onSale">
-              <img src="./assets/product.png" alt="Product">
-    
-              <section class="content">
-                <p>Placa de Vídeo Asus GeForce RTX 3090 24GB - GDDR6X 384 bits ROG Strix Gaming</p>
-                
-                <span class="price">
-                  <strong>R$ 33.254,99</strong>
-                  
-                  <span class="discount">
-                    R$ 55.539,00
-                  </span>
-                </span>
-
-                <button class="tertiary">
-                  Comprar
-                </button>
-              </section>
-            </div>
+          <?php 
+              queryConnect('notebooks');
+          ?>
           </div>
         </section>
 
@@ -310,45 +242,9 @@
           <h3>Doméstico</h3>
     
           <div class="category-products">
-            <div class="product">
-              <img src="./assets/product.png" alt="Product">
-    
-              <section class="content">
-                <p>Placa de Vídeo Asus GeForce RTX 3090 24GB - GDDR6X 384 bits ROG Strix Gaming</p>
-                
-                <span class="price">
-                  <strong>R$ 33.254,99</strong>
-
-                  <span class="discount">
-                    R$ 55.539,00
-                  </span>
-                </span>
-
-                <button class="tertiary">
-                  Comprar
-                </button>
-              </section>
-            </div>
-
-            <div class="product onSale">
-              <img src="./assets/product.png" alt="Product">
-    
-              <section class="content">
-                <p>Placa de Vídeo Asus GeForce RTX 3090 24GB - GDDR6X 384 bits ROG Strix Gaming</p>
-                
-                <span class="price">
-                  <strong>R$ 33.254,99</strong>
-                  
-                  <span class="discount">
-                    R$ 55.539,00
-                  </span>
-                </span>
-
-                <button class="tertiary">
-                  Comprar
-                </button>
-              </section>
-            </div>
+          <?php 
+            queryConnect('domesticos');
+          ?>
           </div>
         </section>
       </div>

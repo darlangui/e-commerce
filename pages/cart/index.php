@@ -6,12 +6,6 @@
     if(mysqli_connect_errno()){
         echo "Erro :" .mysqli_connect_error();
     }
-
-    $query = "SELECT produtos_id FROM cart ORDER BY user_id = '".$_SESSION['id']."'";
-    $result = $con->query($query);
-    while($row = mysqli_fetch_assoc($result)){                  
-      $products[] = $row['produtos_id']; 
-    }
   }else{
     header('Location: ../login');
   }
@@ -47,27 +41,30 @@
         <h2>Carrinho</h2>
         <div class="products">
         <?php
-          $query = "SELECT * FROM produtos ORDER BY id = '".$products[0]."'";
+          $total = 0;
+          $prom = 0;
+          $query = "SELECT * FROM cart WHERE user_id = {$_SESSION['id']}";
           $result = $con->query($query);
-          while($row = mysqli_fetch_assoc($result)){  
-            echo " 
-            <div class='product'>
-              <img class='product' src='../../getImg.php?img={$row['img']}' alt='product'>
-              
-
+          while($row = mysqli_fetch_assoc($result)){
+            $query = "SELECT * FROM produtos WHERE id = {$row['produtos_id']}";
+            $results = $con->query($query);
+            while($rows = mysqli_fetch_assoc($results)){
+              $total = $rows['valor'] + $total;
+              $prom = $rows['promo'] + $prom;
+              echo "
+              <div class='product'>
+              <img class='product' src='../../photos/{$rows['img']}' alt='product'>
               <div class='product-content'>
-                <p>Apple iPhone 13 Pro Max (256 GB) - Prateado - Desbloqueado com garantia</p>
-
+                <p>{$rows['nome']}</p>
                 <span class='price'>
-                  <strong>R$ 7.899,00</strong>
-
-                  <span class='discount'>R$ 0,00</span>
+                  <strong>R$ {$rows['valor']}</strong>
+                  <span class='discount'>R$ {$rows['promo']}</span>
                 </span>
-
               </div>
-
-              <img src='../../assets/remove-icon.svg' alt='remove'>
-            </div>";
+              <a class='delete' href ='delete.php?id={$row['id']}'>  <img src='../../assets/remove-icon.svg' alt='remove'> </a>
+            </div>
+            ";
+            }
           }
         ?>
         </div>
@@ -78,7 +75,7 @@
           <div class="line">
             <span>Produtos</span>
   
-            <strong>R$ 17.389,00</strong>
+            <strong>R$ <?php echo $total; ?></strong>
           </div>
   
           <div class="line">
@@ -88,17 +85,16 @@
           </div>
   
           <div class="line">
-            <span>Cupom de desconto</span>
+            <span>Descontos</span>
   
-            <strong>- -</strong>
+            <strong><?php if($prom == 0){echo '- -';}else{echo $prom;}?></strong>
           </div>
         </div>
 
         <div class="bottom">
           <div class="total">
             <span>Total</span>
-
-            <h3>R$ 18.891,00</h3>
+            <h3>R$ <?php echo $total - $prom; ?></h3>
           </div>
 
           <a href="../success/index.php">
