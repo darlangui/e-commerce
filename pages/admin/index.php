@@ -78,29 +78,31 @@
       </header>
 
       <div class="filters">
-        <div class="filter">
-          Informática
-        </div>
+        <form action="#">
+          <div class="filter">
+            <button type="submit">Informática</button>
+          </div>
 
-        <div class="filter active">
-          Celulares
-        </div>
+          <div class="filter active">
+            <button type="submit">Celulares</button>
+          </div>
 
-        <div class="filter">
-          Móveis
-        </div>
+          <div class="filter">
+            <button type="submit">Móveis</button>
+          </div>
 
-        <div class="filter">
-          Notebooks
-        </div>
+          <div class="filter">
+            <button type="submit">Notebooks</button>
+          </div>
 
-        <div class="filter">
-          Domésticos
-        </div>
+          <div class="filter">
+            <button type="submit">Domésticos</button>
+          </div>
 
-        <div class="filter">
-          Promoções
-        </div>
+          <div class="filter">
+            <button type="submit">Promoções</button>
+          </div>
+        </form>
       </div>
       <div class="products">
         <?php 
@@ -156,9 +158,11 @@
                 <option value='domesticos' $domesticos>Domésticos</option>
               </select>
 
-              <a class='delete' href ='delete.php?id={$row['id']}'> <img src='../../assets/delete-icon.svg' alt='delete'> </a>
+              <a class='delete option' href ='delete.php?id={$row['id']}'>
+                <img src='../../assets/delete-icon.svg' alt='delete'>
+              </a>
               
-              <button class='save'>
+              <button class='save option'>
                 <img src='../../assets/check-icon.svg' alt='save'> 
               </button>
             </div>

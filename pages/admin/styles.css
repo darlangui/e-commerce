@@ -76,14 +76,14 @@
   justify-content: center;
 }
 
-.main .filters {
+.main .filters form {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 24px;
 }
 
-.main .filters .filter {
+.main .filters .filter button {
   width: 176px;
   height: 56px;
   background: var(--primary-ghost);
@@ -101,12 +101,12 @@
   transition: background 0.5s;
 }
 
-.main .filters .filter.active {
+.main .filters .filter.active button {
   background-color: var(--primary-regular);
   color: var(--grayscale-white);
 }
 
-.main .filters .filter.active:hover {
+.main .filters .filter.active:hover button {
   background-color: var(--primary-dark);
 }
 
@@ -214,7 +214,7 @@
   gap: 12px;
 }
 
-.main .products .product .options button {
+.main .products .product .options .option {
   width: 56px;
   height: 56px;
   border-radius: 12px;

@@ -7,7 +7,7 @@
   <title>iShopping</title>
 
   <link rel="stylesheet" href="./global.css">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
   <?php 
@@ -142,20 +142,20 @@
             </a>
           </div>
           
-          <button>
+          <button class="login">
             <a href="./pages/login/index.php">Entrar</a>
           </button>
         
 
           <div class="profile">
-            <span id="profile"> <?php  if(isset($_SESSION['nome'])){ echo  substr($_SESSION['nome'], 0, 1);} ?>  </span>
+            <span id="profile"> <?php  if(isset($_SESSION['nome'])){ echo strtoupper(substr($_SESSION['nome'], 0, 1));} ?>  </span>
 
             <div id="dropdown" class="logout-dropdown">
               <div class="logout-content">
                 <div class="section">
                   <img src="./assets/logout-icon.svg" alt="logou">
                     <form method="post">
-                      <input type="submit" class="sair" name='sair' value='Sair' style='border-color: none;'>
+                      <button id="logout" type="submit" class="sair" name='sair'>Sair</button>
                     </form>
                   <?php 
                     if(isset($_POST['sair'])){

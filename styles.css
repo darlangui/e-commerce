@@ -79,7 +79,7 @@ header .nav .content section.right img {
   cursor: pointer;
 }
 
-header .nav.isLogged .content section.right button {
+header .nav.isLogged .content section.right .login {
   display: none;
 }
 
@@ -147,11 +147,13 @@ header .nav.isLogged .profile .logout-dropdown .logout-content img {
   margin: 0;
 }
 
-header .nav.isLogged .profile .logout-dropdown .logout-content span {
+header .nav.isLogged .profile .logout-dropdown .logout-content #logout {
   font-weight: 500;
   font-size: 1.6rem;
   line-height: 150%;
   color: var(--grayscale-black);
+  width: auto;
+  height: auto;
 }
 
 header .nav .content section.right button {
