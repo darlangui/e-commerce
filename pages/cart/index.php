@@ -97,7 +97,7 @@
             <h3>R$ <?php echo $total - $prom; ?></h3>
           </div>
 
-          <a href="../success/index.php">
+          <a href="../success/delete.php">
             <button class="primary">Confirmar compra</button>
           </a>
         </div>
