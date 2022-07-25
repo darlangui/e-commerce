@@ -27,7 +27,7 @@ Você pode acessar o <a href="https://github.com/darlangui/e-commerce">código f
 Após baixar o projeto, você devera importar a base de dados arquivo <a href="https://github.com/darlangui/e-commerce/blob/main/ecommerce.sql">'ecommerce.sql'</a> para o seu gerenciador de banco de dados. (Necessitando ter compatibilidade com MySQL).
 <br> 
 <br>
-    <ol>
+    <ul>
         <li>
              Copie o código SQL ou importe para seu <b>SGBD</b>.
         </li> 
@@ -37,7 +37,7 @@ Após baixar o projeto, você devera importar a base de dados arquivo <a href="h
         <li>
              Abra seu navegador e acesse <b>Localhost/CaminhoParaoProjeto</b>.
         </li>   
-    </ol> 
+    </ul> 
 <br>     
 Lembrando que para entrar no sistema como administrador é necessario inserir o mesmo diretamente na base de dados e usuários comuns devem ser cadastrados diretamento na aplicação.
 
