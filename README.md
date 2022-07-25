@@ -22,3 +22,6 @@
 * [Conclusão](#conclusão)
 
 <h2> Descrição do Projeto </h2>
+
+  Projeto sendo desenvolvido com o intuito de testar habilidades na programação web com a linguagem PHP.
+  :construction: Projeto em construção :construction:
