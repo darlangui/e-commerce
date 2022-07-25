@@ -21,7 +21,7 @@ Aplicação Web simulando um e-commerce para aferir o conhecimento na linguagem 
 
 <h2> 📁 Acesso ao projeto </h2>
 
-Você pode acessar o <a href="">código fonte do projeto</a> ou <a href="">baixá-lo</a>.
+Você pode acessar o <a href="https://github.com/darlangui/e-commerce">código fonte do projeto</a> ou <a href="">baixá-lo</a>.
 
 <h3> 🛠️ Abrir e rodar o projeto </h3> 
 **Apresente as instruções necessárias para abrir e executar o projeto**
