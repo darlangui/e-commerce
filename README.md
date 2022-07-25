@@ -10,7 +10,7 @@
 :construction: Projeto em construção :construction:
 <br>
 <br>
-Projeto desenvolvido com o intuito de compreender e entender a linguagem de programação PHP focando no desenvolvimento de uma aplicação Web.
+Aplicação Web simulando um e-commerce para aferir o conhecimento na linguagem PHP.
 <br>
 
 <h2> :hammer: Funcionalidades do projeto </h2>
@@ -21,7 +21,7 @@ Projeto desenvolvido com o intuito de compreender e entender a linguagem de prog
 
 <h2> 📁 Acesso ao projeto </h2>
 
-**Indique como é possível baixar ou acessar o código fonte do projeto, seja projeto inicial ou final**
+Você pode acessar o <a href="">código fonte do projeto</a> ou <a href="">baixá-lo</a>.
 
 <h3> 🛠️ Abrir e rodar o projeto </h3> 
 **Apresente as instruções necessárias para abrir e executar o projeto**
