@@ -1,2 +1,3 @@
 # <h1 align="center"> iShopping - Aplicação de Programação Web </h1>
-![Artes GitHub](https://user-images.githubusercontent.com/71740181/180844054-399ae711-a533-4ec0-803e-74ed2b4d2a39.png)
+
+![Rectangle 1](https://user-images.githubusercontent.com/71740181/180845121-c87dfa6b-83a9-41a4-98b5-05ce4bd53339.png)
