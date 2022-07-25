@@ -21,7 +21,7 @@
 * [Licença](#licença)
 * [Conclusão](#conclusão)
 
-<h2> Descrição do Projeto </h2> #descrição-do-projeto
+<h2> Descrição do Projeto </h2>
 :construction: Projeto em construção :construction:
 <br>
 <br>
