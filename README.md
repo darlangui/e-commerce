@@ -12,4 +12,4 @@
 <br>
 Projeto desenvolvido com o intuito de compreender e entender a linguagem de programação PHP focando no desenvolvimento de uma aplicação Web.
 
-<div align="center"> ![Imagem ilustrando a conexão entre o iShopping, o PHP e a Web](https://user-images.githubusercontent.com/71740181/180869890-c77ec09a-f641-44e0-817c-449a1b5d49c2.png) </div>
+<h3 align="center"> ![Imagem ilustrando a conexão entre o iShopping, o PHP e a Web](https://user-images.githubusercontent.com/71740181/180869890-c77ec09a-f641-44e0-817c-449a1b5d49c2.png) </h3>
