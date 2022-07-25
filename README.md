@@ -21,3 +21,10 @@ Projeto desenvolvido com o intuito de compreender e entender a linguagem de prog
 - `Compras e Finalização das compras`: Compras de produtos e Finalização dessas compras removendo as do carrinho de compras.
 - `Criar, Alterar e Excluir produtos`: Cadastro, alteração e exclusão de produtos em que usuários comuns irão optar por comprar.
 
+<h4> ## 📁 Acesso ao projeto </h4>
+
+**Indique como é possível baixar ou acessar o código fonte do projeto, seja projeto inicial ou final**
+
+## 🛠️ Abrir e rodar o projeto
+
+**Apresente as instruções necessárias para abrir e executar o projeto**
