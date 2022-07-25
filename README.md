@@ -22,8 +22,7 @@
 * [Conclusão](#conclusão)
 
 <h2> Descrição do Projeto </h2> 
-<br>
 :construction: Projeto em construção :construction:
 <br>
-
+<br>
 Projeto desenvolvido com o intuito de compreender e enteder a linguagem de programação PHP focando no desenvolvimento de uma aplicação Web.
