@@ -21,7 +21,9 @@
 * [Licença](#licença)
 * [Conclusão](#conclusão)
 
-<h2> Descrição do Projeto </h2>
+<h2> Descrição do Projeto </h2> 
+<br>
+:construction: Projeto em construção :construction:
+<br>
 
-  Projeto sendo desenvolvido com o intuito de testar habilidades na programação web com a linguagem PHP.
-  :construction: Projeto em construção :construction:
+Projeto desenvolvido com o intuito de compreender e enteder a linguagem de programação PHP focando no desenvolvimento de uma aplicação Web.
