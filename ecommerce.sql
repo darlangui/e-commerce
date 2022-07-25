@@ -64,13 +64,6 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Extraindo dados da tabela `user`
---
-
-INSERT INTO `user` (`id`, `nome`, `email`, `senha`, `cpf`, `tipo`) VALUES
-(1, 'Darlan Eduardo Guimarães Santos', 'darlaneduardoguimaraes@gmail.com', '12345678', '04065865000', 'adm');
-
---
 -- Índices para tabelas despejadas
 --
 
