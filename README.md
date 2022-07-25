@@ -1,2 +1,1 @@
-# e-commerce
-E-commerce
+# iShopping - Projeto de Programação Web
