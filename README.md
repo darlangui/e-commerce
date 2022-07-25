@@ -21,7 +21,14 @@ Aplicação Web simulando um e-commerce para aferir o conhecimento na linguagem 
 
 <h2> 📁 Acesso ao projeto </h2>
 
-Você pode acessar o <a href="https://github.com/darlangui/e-commerce">código fonte do projeto</a> ou <a href="">baixá-lo</a>.
+Você pode acessar o <a href="https://github.com/darlangui/e-commerce">código fonte do projeto</a> ou <a href="https://github.com/darlangui/e-commerce/archive/refs/heads/main.zip">baixá-lo</a>.
 
 <h3> 🛠️ Abrir e rodar o projeto </h3> 
-**Apresente as instruções necessárias para abrir e executar o projeto**
+<br>
+Após baixar o projeto, você devera importar a base de dados arquivo <a href="https://github.com/darlangui/e-commerce/blob/main/ecommerce.sql">'ecommerce.sql'</a> para o seu gerenciador de banco de dados. (Necessitando ter compatibilidade com MySQL).
+<br>
+    - Copie o código SQL ou importe para seu **SGBD**.
+    - Coloque o cógido baixado anteriormente em seu **Localhost**.
+    - Abra seu navegador e acesse **Localhost/CaminhoParaoProjeto**. <br>
+Lembrando que para entrar no sistema como administrador é necessario inserir o mesmo diretamente na base de dados.
+
