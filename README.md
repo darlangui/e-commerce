@@ -13,9 +13,7 @@
 Projeto desenvolvido com o intuito de compreender e entender a linguagem de programação PHP focando no desenvolvimento de uma aplicação Web.
 <br>
 
-<h3> Funcionabilidades e Demostração da Aplicação </h3>
-
-## :hammer: Funcionalidades do projeto
+<h3> ## :hammer: Funcionalidades do projeto </h3>
 
 - `Registro e Login Autenticado`: Registro de usuário com email e senha requerindo algumas informações para a conta e Login autenticando os usuários já cadastradas na base de dados.
 - `Compras e Finalização das compras`: Compras de produtos e Finalização dessas compras removendo as do carrinho de compras.
