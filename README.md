@@ -17,8 +17,7 @@ Projeto desenvolvido com o intuito de compreender e entender a linguagem de prog
 
 ## :hammer: Funcionalidades do projeto
 
-- `Funcionalidade 1`: descrição da funcionalidade 1
-- `Funcionalidade 2`: descrição da funcionalidade 2
-- `Funcionalidade 2a`: descrição da funcionalidade 2a relacionada à funcionalidade 2
-- `Funcionalidade 3`: descrição da funcionalidade 3
+- `Registro e Login Autenticado`: Registro de usuário com email e senha requerindo algumas informações para a conta e Login autenticando os usuários já cadastradas na base de dados.
+- `Compras e Finalização das compras`: Compras de produtos e Finalização dessas compras removendo as do carrinho de compras.
+- `Criar, Alterar e Excluir produtos`: Cadastro, alteração e exclusão de produtos em que usuários comuns irão optar por comprar.
 
