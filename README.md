@@ -39,7 +39,7 @@ Após baixar o projeto, você devera importar a base de dados arquivo <a href="h
              Abra seu navegador e acesse <b>Localhost/CaminhoParaoProjeto</b>.
         </li>   
     </ul> 
-<br>
+
 Lembrando que para entrar no sistema como administrador é necessario inserir o mesmo diretamente na base de dados e usuários comuns devem ser cadastrados diretamento na aplicação.
 
 
