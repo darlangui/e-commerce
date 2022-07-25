@@ -8,7 +8,7 @@
 
 ## Índice 
 
-* [Título e Imagem de capa](#Título-e-Imagem-de-capa)
+* [Título e Imagem de capa](#iShopping - Aplicação de Programação Web)
 * [Badges](#badges)
 * [Índice](#índice)
 * [Descrição do Projeto](#descrição-do-projeto)
