@@ -50,4 +50,8 @@ Lembrando que para entrar no sistema como administrador é necessario inserir o 
     <li> HTML5 </li> 
 </ul> 
 
+<h2> Autores <h2>
+| [<img src="https://avatars.githubusercontent.com/u/37356058?v=4" width=115><br><sub>Darlan Eduardo Guimaráes Santos</sub>](https://github.com/darlangui) 
+|  [<img src="https://avatars.githubusercontent.com/u/30351153?v=4" width=115><br><sub>Guilherme Lima</sub>](https://github.com/guilhermeulbriki) 
+| :---: | :---: | :---: |
 
