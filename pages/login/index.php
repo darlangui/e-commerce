@@ -11,8 +11,8 @@
 </head>
 <body>
   <?php
-    session_start();
-    if(isset($_COOKIE['status_login'])){
+    session_start(); // inciia a sessão. 
+    if(isset($_COOKIE['status_login'])){ // verifica se o status_login tem algum erro.
         if($_COOKIE['status_login'] == 'true'){
           $cor = 'red';
           setcookie('status_login', 'false');

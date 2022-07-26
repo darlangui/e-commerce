@@ -11,8 +11,8 @@
 </head>
 <body>
   <?php
-    session_start();
-    if(isset($_SESSION['msg'])){
+    session_start(); // inicia a sessão do usuário.
+    if(isset($_SESSION['msg'])){ // verifica se não há mensagem de erro no resgistro.
         if($_SESSION['msg'] == true){
           $cor = 'red';
           session_destroy();
@@ -20,6 +20,7 @@
         }
     }
   ?>
+  
   <main>
     <section class="left">
       <a href="../../index.html" class="logo">

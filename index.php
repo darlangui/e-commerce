@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>iShopping</title>
 
   <link rel="stylesheet" href="./global.css">
@@ -11,63 +12,70 @@
 </head>
 <body>
   <?php 
-    $type = 'nav container';
-    $cart = 'cart blank';
+    $type = 'nav container'; // define o tipo para o nav container.
+    $cart = 'cart blank'; // define o tipo para cart blank.
 
-    function queryConnect($table){
-      $con = mysqli_connect("localhost", "root", "", "ecommerce");
-      if(mysqli_connect_errno()){
-        echo "Erro :" .mysqli_connect_error();
-      }
+    function queryConnect($table){ // função que retorna um produto.
+      $con = mysqli_connect("localhost", "root", "", "ecommerce"); // conexão com o bd.
+      if(mysqli_connect_errno()){ echo "Erro :" .mysqli_connect_error(); } // verifica se a algum erro com a conexão.
 
-      $query = "SELECT * FROM produtos WHERE categoria = '$table'";
-      $result = $con->query($query);
-      while($row = mysqli_fetch_assoc($result)){
-
-        if($row['promo'] == 0){
+      $query = "SELECT * FROM produtos WHERE categoria = '$table'"; // seleciona a tabela produtos levando em consideração a categoria.
+      $result = $con->query($query); // executa a query
+      while($row = mysqli_fetch_assoc($result)){ // vai rodar a query com o while passando todos as linhas.
+        if($row['promo'] == 0){ // verifica se existe alguma promoção do produto e exibe o mesmo.
           echo "
             <form method='post' action='purchase.php'>
               <div class='product'>
+
                 <input type='hidden' name='id' value='{$row['id']}'>
+
                 <img src='photos/{$row['img']}' alt='Product'>
+
                 <section class='content'>
 
                   <p> {$row['nome']} </p>
-                    
+
                   <span class='price'>
-                      <strong> R$ {$row['valor']} </strong>
+                    <strong> R$ {$row['valor']} </strong>
                   </span>
 
                   <button class='tertiary'>
                     Comprar
                   </button>
+
                 </section>
               </div>
             </form>
           ";
-        }else{
-          $valor_new = 0;
-          $valor_new = $row['valor'] - $row['promo'];
+        }else{ // caso não haja promoção exibe o produto sem o selo de promoção.
+          $valor_new = $row['valor'] - $row['promo']; // cria o novo valor do produto descontando a promoção aplicada.
+
           echo "
             <form method='post' action='purchase.php'>
               <div class='product onSale'>
+
                 <img src='photos/{$row['img']}' alt='Product'>
+
                 <input type='hidden' name='id' value='{$row['id']}'>
+
                 <section class='content'>
 
-                    <p>{$row['nome']}</p>
+                  <p>{$row['nome']}</p>
                       
                   <span class='price'>
+
                     <strong>R$ {$valor_new}</strong>
-                  
+
                     <span class='discount'>
                       R$ {$row['valor']}
                     </span>
+
                   </span>
 
                   <button class='tertiary'>
                     Comprar
                   </button>
+
                 </section>
               </div>
             </form>
@@ -77,27 +85,29 @@
       $con->close();
     }
 
-    session_start();
-    if(isset($_SESSION['user'])){
-      if($_SESSION['user'] == 'adm'){
-        $type = 'nav container isLogged isAdmin';
-      }else{
-        $con = mysqli_connect("localhost", "root", "", "ecommerce");
+    session_start(); // inicia a sessão.
+    if(isset($_SESSION['user'])){ // verifica se existe a sessão do usuário.
+      if($_SESSION['user'] == 'adm'){ // caso exista a sessão verifica se o usuario é adm.
+        $type = 'nav container isLogged isAdmin'; // caso ele seja define o type para usuário logado como administrador.
+      }else{ // caso não seja adm, entende-se que é um usuário comum.
+        $con = mysqli_connect("localhost", "root", "", "ecommerce"); // conexão com o bd.
+        if(mysqli_connect_errno()){ echo "Erro :" .mysqli_connect_error(); } // verifica se há erros na conexão.
 
-        if(mysqli_connect_errno()){
-          echo "Erro :" .mysqli_connect_error();
-        }
-        $query = "SELECT * FROM cart WHERE user_id = '{$_SESSION['id']}'";
+        $query = "SELECT * FROM cart WHERE user_id = '{$_SESSION['id']}'"; // seleciona a tabela cart levando em consideração o id do usuario.
         $result = $con->query($query);
-        $cont_cart = 0;
+
+        $cont_cart = 0; // inicia a variavel que conta se há alguma compra no id do usuario.
+
         while($row = mysqli_fetch_assoc($result)){
-          $cont_cart++;
+          $cont_cart++; // contador.
         }
         if($cont_cart != 0){
-          $cart = 'cart hasProducts';
+          $cart = 'cart hasProducts'; // caso exista alguma compra do usuário define o cart como hasProduct.
         }
-        $con->close();
-        $type = 'nav container isLogged';
+
+        $type = 'nav container isLogged'; // define o tipo como usuário logado.
+
+        $con->close(); // fecha a conexão com o bd.
       }
     }
   ?>
@@ -105,7 +115,6 @@
     <div class="banner container">
       <div class="content">
         <img src="./assets/percent-icon.svg" alt="icon-percent">
-
         <span>Os melhores descontos do mercado !</span>
       </div>
     </div>
@@ -146,7 +155,6 @@
             <a href="./pages/login/index.php">Entrar</a>
           </button>
         
-
           <div class="profile">
             <span id="profile"> <?php  if(isset($_SESSION['nome'])){ echo strtoupper(substr($_SESSION['nome'], 0, 1));} ?>  </span>
 
@@ -157,18 +165,6 @@
                     <form method="post">
                       <button id="logout" type="submit" class="sair" name='sair'> Sair </button> 
                     </form>
-                  <?php 
-                    if(isset($_POST['sair'])){
-                      if(isset($_SESSION['user'])){
-                        unset($_SESSION['user']);
-                        unset($_SESSION['email']);
-                        unset($_SESSION['senha']);
-                        unset($_SESSION['nome']);
-                        unset($_SESSION['id']);
-                        header('Location: index.php');
-                      } 
-                    }
-                  ?>
                 </div>
               </div>
             </div>
@@ -178,6 +174,19 @@
       </div>
     </div>
   </header>
+
+  <?php 
+    if(isset($_POST['sair'])){ // verifica se o usuário cliclou em sair.
+      if(isset($_SESSION['user'])){ // encerra a sessão do usuário.
+        unset($_SESSION['user']);
+        unset($_SESSION['email']);
+        unset($_SESSION['senha']);
+        unset($_SESSION['nome']);
+        unset($_SESSION['id']);
+        header('Location: index.php'); // recarrega a pag home.
+      } 
+    }
+  ?>
 
   <main>
     <div class="hero-banner container">
@@ -207,6 +216,7 @@
             queryConnect('informatica');
           ?>
           </div>
+
         </section>
 
         <section class="category">
@@ -217,15 +227,18 @@
               queryConnect('celulares');
             ?>
           </div>
+
         </section>
 
         <section class="category">
           <h3>Móveis</h3>
+
           <div class="category-products">
           <?php 
               queryConnect('moveis');
           ?>
           </div>
+
         </section>
 
         <section class="category">
@@ -236,15 +249,18 @@
               queryConnect('notebooks');
           ?>
           </div>
+
         </section>
 
         <section class="category">
           <h3>Doméstico</h3>
     
           <div class="category-products">
+
           <?php 
             queryConnect('domesticos');
           ?>
+          
           </div>
         </section>
       </div>

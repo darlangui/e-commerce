@@ -1,10 +1,7 @@
 <?php
     //pronto
     $con = mysqli_connect("localhost", "root", "", "ecommerce");
-
-    if(mysqli_connect_errno()){
-        echo "Erro :" .mysqli_connect_error();
-    }
+    if(mysqli_connect_errno()){ echo "Erro :" .mysqli_connect_error(); }
     
     if(isset($_SESSION['login']) and (isset($_SESSION['senha']))){
         header('Location: ../../');
@@ -16,13 +13,14 @@
     $query = "SELECT id, email, senha, tipo, nome FROM user";
     $result = $con->query($query);
 
-    $verify = false;
+    $verify = false; // variavel boleana que identica se a senha e email estão corretos.
+
     while($row = mysqli_fetch_assoc($result)){
         if(strlen($row['senha']) < 16){
             if(($row['senha'] == $senha) && ($row['email'] == $email)){
                 // usuario e senha corretos.
                 $verify = true;
-                session_start();
+                session_start(); // inicia a sessão do usuário.
                 $_SESSION['user'] = $row['tipo'];
                 $_SESSION['email'] = $row['email'];
                 $_SESSION['senha'] = $row['senha'];
@@ -33,8 +31,9 @@
             }
         }else{
             if((password_verify($senha, $row['senha'])) && ($row['email'] == $email)){
+                // usuario e senha corretos.
                 $verify = true;
-                session_start();
+                session_start(); // inicia a sessão do usuário.
                 $_SESSION['user'] = $row['tipo'];
                 $_SESSION['email'] = $row['email'];
                 $_SESSION['senha'] = $row['senha'];

@@ -10,21 +10,21 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <script>
-  </script>
   <?php
     function createQuery($color, $cat){
+
       $con = mysqli_connect("localhost", "root", "", "ecommerce");
+      if(mysqli_connect_errno()){ echo "Erro :" .mysqli_connect_error(); }
 
-      if(mysqli_connect_errno()){
-        echo "Erro :" .mysqli_connect_error();
-      }
-      if($cat == null){
-        $query = "SELECT * FROM produtos";
-          $result = $con->query($query);
-          while($row = mysqli_fetch_assoc($result)){
-            $informatica = null; $celulares = null; $moveis = null; $notebooks = null; $domesticos = null;
-            switch($row['categoria']){
+      if($cat == null){ // verifica a categoria do produto caso não tenho nenhuma mostra todos os produtos.
+
+        $query = "SELECT * FROM produtos"; // seleciona a tabela produtos.
+        $result = $con->query($query);
+        while($row = mysqli_fetch_assoc($result)){
+
+          $informatica = null; $celulares = null; $moveis = null; $notebooks = null; $domesticos = null; // define as variaveis auxiliares como null.
+
+          switch($row['categoria']){ // determina de qual categoria o produto é.
             case 'informatica':
               $informatica = 'selected';
             break;
@@ -41,10 +41,13 @@
               $domesticos = 'selected';
             break;
             }
-            echo "<div class='product'>
+
+            echo "
+            <div class='product'>
             <form action='alter.php' method='post' enctype='multipart/form-data' class='save'>
               <input type='hidden' name='id' value='{$row['id']}'>
               <section class='image'>
+
                 <div class='image-container'>
                   <img src='../../photos/{$row['img']}' alt='product' style='border-color: $color;'>
                 </div>
@@ -55,6 +58,7 @@
               </section>
 
             <section class='content'>
+
               <textarea class='title' name='title' placeholder='Nome do produto'>{$row['nome']}</textarea>
 
               <div class='price-container'>
@@ -83,171 +87,186 @@
           </form>
         </div>
         ";
-      }
-      }else{
-        if($cat == 'promo'){
-          $query = "SELECT * FROM produtos WHERE promo != 0";
-          $result = $con->query($query);
-          while($row = mysqli_fetch_assoc($result)){
-            $informatica = null; $celulares = null; $moveis = null; $notebooks = null; $domesticos = null;
-            switch($row['categoria']){
-            case 'informatica':
-              $informatica = 'selected';
-            break;
-            case 'celulares':
-              $celulares = 'selected';
-            break;
-            case 'moveis':
-              $moveis = 'selected';
-            break;
-            case 'notebooks':
-              $notebooks = 'selected';
-            break;
-            case 'domesticos':
-              $domesticos = 'selected';
-            break;
-            }
-            echo "<div class='product'>
-            <form action='alter.php' method='post' enctype='multipart/form-data' class='save'>
-              <input type='hidden' name='id' value='{$row['id']}'>
-              <section class='image'>
-                <div class='image-container'>
-                  <img src='../../photos/{$row['img']}' alt='product' style='border-color: $color;'>
-                </div>
-
-                <div class='input-container'>
-                  <input type='file' name='imageInput'>
-                </div>
-              </section>
-
-            <section class='content'>
-              <textarea class='title' name='title' placeholder='Nome do produto'>{$row['nome']}</textarea>
-
-              <div class='price-container'>
-                <input type='text' class='price' name='price' placeholder='R$ {$row['valor']}'>
-                <input type='text' class='discount' name='discount' placeholder='R$ {$row['promo']}'>
-              </div>
-
-              <div class='options'>
-                <select name='category'>
-                  <option value='informatica' $informatica>Informática</option>
-                  <option value='celulares' $celulares>Celulares</option>
-                  <option value='moveis' $moveis>Móveis</option>
-                  <option value='notebooks' $notebooks>Notebooks</option>
-                  <option value='domesticos' $domesticos>Domésticos</option>
-                </select>
-
-                <a class='delete option' href ='delete.php?id={$row['id']}'>
-                  <img src='../../assets/delete-icon.svg' alt='delete'>
-                </a>
-                
-                <button class='save option'>
-                  <img src='../../assets/check-icon.svg' alt='save'> 
-                </button>
-              </div>
-            </section>
-          </form>
-        </div>
-        ";
-          }
+        }
         }else{
-        $query = "SELECT * FROM produtos WHERE categoria = '$cat'";
-          $result = $con->query($query);
-          while($row = mysqli_fetch_assoc($result)){
-            $informatica = null; $celulares = null; $moveis = null; $notebooks = null; $domesticos = null;
-            switch($row['categoria']){
-            case 'informatica':
-              $informatica = 'selected';
-            break;
-            case 'celulares':
-              $celulares = 'selected';
-            break;
-            case 'moveis':
-              $moveis = 'selected';
-            break;
-            case 'notebooks':
-              $notebooks = 'selected';
-            break;
-            case 'domesticos':
-              $domesticos = 'selected';
-            break;
-            }
-            echo "<div class='product'>
-            <form action='alter.php' method='post' enctype='multipart/form-data' class='save'>
-              <input type='hidden' name='id' value='{$row['id']}'>
-              <section class='image'>
-                <div class='image-container'>
-                  <img src='../../photos/{$row['img']}' alt='product' style='border-color: $color;'>
+          if($cat == 'promo'){ // caso a cat seja promo mostra todos os produtos em promoção.
+
+            $query = "SELECT * FROM produtos WHERE promo != 0"; // seleciona todos os produtos com promoção diferente de 0.
+            $result = $con->query($query);
+
+            while($row = mysqli_fetch_assoc($result)){
+
+              $informatica = null; $celulares = null; $moveis = null; $notebooks = null; $domesticos = null; // define como null as variaveis aux.
+
+              switch($row['categoria']){ // define a categoria do produto.
+                case 'informatica':
+                  $informatica = 'selected';
+                break;
+                case 'celulares':
+                  $celulares = 'selected';
+                break;
+                case 'moveis':
+                  $moveis = 'selected';
+                break;
+                case 'notebooks':
+                  $notebooks = 'selected';
+                break;
+                case 'domesticos':
+                  $domesticos = 'selected';
+                break;
+              }
+
+              echo "
+              <div class='product'>
+              <form action='alter.php' method='post' enctype='multipart/form-data' class='save'>
+                <input type='hidden' name='id' value='{$row['id']}'>
+                <section class='image'>
+
+                  <div class='image-container'>
+                    <img src='../../photos/{$row['img']}' alt='product' style='border-color: $color;'>
+                  </div>
+
+                  <div class='input-container'>
+                    <input type='file' name='imageInput'>
+                  </div>
+
+                </section>
+
+              <section class='content'>
+
+                <textarea class='title' name='title' placeholder='Nome do produto'>{$row['nome']}</textarea>
+
+                <div class='price-container'>
+                  <input type='text' class='price' name='price' placeholder='R$ {$row['valor']}'>
+                  <input type='text' class='discount' name='discount' placeholder='R$ {$row['promo']}'>
                 </div>
 
-                <div class='input-container'>
-                  <input type='file' name='imageInput'>
+                <div class='options'>
+                  <select name='category'>
+                    <option value='informatica' $informatica>Informática</option>
+                    <option value='celulares' $celulares>Celulares</option>
+                    <option value='moveis' $moveis>Móveis</option>
+                    <option value='notebooks' $notebooks>Notebooks</option>
+                    <option value='domesticos' $domesticos>Domésticos</option>
+                  </select>
+
+                  <a class='delete option' href ='delete.php?id={$row['id']}'>
+                    <img src='../../assets/delete-icon.svg' alt='delete'>
+                  </a>
+                  
+                  <button class='save option'>
+                    <img src='../../assets/check-icon.svg' alt='save'> 
+                  </button>
+
                 </div>
               </section>
-
-            <section class='content'>
-              <textarea class='title' name='title' placeholder='Nome do produto'>{$row['nome']}</textarea>
-
-              <div class='price-container'>
-                <input type='text' class='price' name='price' placeholder='R$ {$row['valor']}'>
-                <input type='text' class='discount' name='discount' placeholder='R$ {$row['promo']}'>
-              </div>
-
-              <div class='options'>
-                <select name='category'>
-                  <option value='informatica' $informatica>Informática</option>
-                  <option value='celulares' $celulares>Celulares</option>
-                  <option value='moveis' $moveis>Móveis</option>
-                  <option value='notebooks' $notebooks>Notebooks</option>
-                  <option value='domesticos' $domesticos>Domésticos</option>
-                </select>
-
-                <a class='delete option' href ='delete.php?id={$row['id']}'>
-                  <img src='../../assets/delete-icon.svg' alt='delete'>
-                </a>
-                
-                <button class='save option'>
-                  <img src='../../assets/check-icon.svg' alt='save'> 
-                </button>
-              </div>
-            </section>
-          </form>
-        </div>
-        ";
+            </form>
+          </div>
+          ";
           }
+          }else{ // mostra os produtos de uma categoria especifica.
+            $query = "SELECT * FROM produtos WHERE categoria = '$cat'";  // seleciona os produtos de uma categoria especifica.
+            $result = $con->query($query);
+
+            while($row = mysqli_fetch_assoc($result)){
+            
+              $informatica = null; $celulares = null; $moveis = null; $notebooks = null; $domesticos = null; // define como null as variaveis aux.
+
+              switch($row['categoria']){ // define a categoria do produto.
+                case 'informatica':
+                  $informatica = 'selected';
+                break;
+                case 'celulares':
+                  $celulares = 'selected';
+                break;
+                case 'moveis':
+                  $moveis = 'selected';
+                break;
+                case 'notebooks':
+                  $notebooks = 'selected';
+                break;
+                case 'domesticos':
+                  $domesticos = 'selected';
+                break;
+              }
+              echo "
+              <div class='product'>
+              <form action='alter.php' method='post' enctype='multipart/form-data' class='save'>
+                <input type='hidden' name='id' value='{$row['id']}'>
+                <section class='image'>
+
+                  <div class='image-container'>
+                    <img src='../../photos/{$row['img']}' alt='product' style='border-color: $color;'>
+                  </div>
+
+                  <div class='input-container'>
+                    <input type='file' name='imageInput'>
+                  </div>
+
+                </section>
+
+              <section class='content'>
+
+                <textarea class='title' name='title' placeholder='Nome do produto'>{$row['nome']}</textarea>
+
+                <div class='price-container'>
+                  <input type='text' class='price' name='price' placeholder='R$ {$row['valor']}'>
+                  <input type='text' class='discount' name='discount' placeholder='R$ {$row['promo']}'>
+                </div>
+
+                <div class='options'>
+                  <select name='category'>
+                    <option value='informatica' $informatica>Informática</option>
+                    <option value='celulares' $celulares>Celulares</option>
+                    <option value='moveis' $moveis>Móveis</option>
+                    <option value='notebooks' $notebooks>Notebooks</option>
+                    <option value='domesticos' $domesticos>Domésticos</option>
+                  </select>
+
+                  <a class='delete option' href ='delete.php?id={$row['id']}'>
+                    <img src='../../assets/delete-icon.svg' alt='delete'>
+                  </a>
+                  
+                  <button class='save option'>
+                    <img src='../../assets/check-icon.svg' alt='save'> 
+                  </button>
+
+                </div>
+              </section>
+            </form>
+          </div>
+          ";
+          }
+        }
       }
+      $con->close(); // encerra a conexão com o bd.
     }
-      $con->close();
-    }
-    session_start();
-    if(isset($_SESSION['nome'])){
-        $cat = null;
-        $nome = $_SESSION['nome'];
-        $cont = 0;
-        $color = null;
+    session_start(); // inicia a sessão.
+    if(isset($_SESSION['nome'])){ // identifica se o usuário tem uma sessão.
+        $cat = null; $color = null;  $cont = 0; // variaveis aux.
+        $nome = $_SESSION['nome']; // nome do usuário.
+
         $con = mysqli_connect("localhost", "root", "", "ecommerce");
+        if(mysqli_connect_errno()){ echo "Erro :" .mysqli_connect_error(); }
 
-          if(mysqli_connect_errno()){
-            echo "Erro :" .mysqli_connect_error();
-          }
-          $query = "SELECT * FROM produtos";
-          $result = $con->query($query);
-          while($row = mysqli_fetch_assoc($result)){  
-            $cont++;
-          }
+        $query = "SELECT * FROM produtos";
+        $result = $con->query($query);
+        while($row = mysqli_fetch_assoc($result)){ 
+          $cont++; // contador.
+        }
 
-        if(isset($_SESSION['msg'])){
+        if(isset($_SESSION['msg'])){ // verifica se não há nenhuma mensagem de erro de cadastro.
           if($_SESSION['msg'] ==  true){
             $cor = 'red';
             unset($_SESSION['msg']);
           }
         }
-        if(isset($_SESSION['msgalter'])){
+        if(isset($_SESSION['msgalter'])){ // verifica se não há nenhuma mensagem de erro de alteração.
           $color = 'red';
           unset($_SESSION['msgalter']);
         }
     }else{
-      header('Location: ../login');
+      header('Location: ../login'); // manda o usuário para o login.
     }
   ?>
   <div class="container admin">
@@ -255,6 +274,7 @@
       <img src="../../assets/black-settings-icon.svg" alt="settings">
       
       <span>Sessão do administrador</span>
+      
     </div>
   </div>
 

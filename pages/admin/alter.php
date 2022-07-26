@@ -2,11 +2,10 @@
     session_start();
     if(isset($_SESSION['user'])){
         $con = mysqli_connect("localhost", "root", "", "ecommerce");
+        if(mysqli_connect_errno()){ echo "Erro :" .mysqli_connect_error(); }
 
-        if(mysqli_connect_errno()){
-            echo "Erro :" .mysqli_connect_error();
-        }
-        $valor = null; $prom = null;
+        $valor = null; $prom = null; // define como nulo os valores.
+        
         $id = filter_input(INPUT_POST, "id", FILTER_DEFAULT);
         $nome =  filter_input(INPUT_POST, "title", FILTER_DEFAULT); // sempre usar filter --> mais indicado.
         $valor = filter_input(INPUT_POST, "price", FILTER_DEFAULT); // sempre usar filter --> mais indicado.
@@ -15,10 +14,12 @@
         $img = $_FILES["imageInput"]; // recebe com arquivo a imagem
         
         $error = array(); // array pra verificar possiveis erros.
+
         try {
             if($img["size"] == 0){
+
                 $query = "UPDATE produtos SET nome='$nome', valor='$valor', categoria='$categoria', promo='$prom' WHERE id = '$id'";
-    
+
                 if($valor == null){
                     $query = "UPDATE produtos SET nome='$nome', categoria='$categoria', promo='$prom' WHERE id = '$id'";
                 }
@@ -32,11 +33,10 @@
                 if($con->query($query) ==  TRUE){
                     echo "Alterado com sucesso";
                     header('Location: index.php');
-                }else {
-                    echo "Error: " . $query . "<br>" . $con->error;
                 }
+                //else { echo "Error: " . $query . "<br>" . $con->error; }
     
-            $con->close();
+                $con->close(); // fecha a conexão com o bd.
             }else{
                 if(!preg_match("/^image\/(pjpeg|jpeg|png|gif|bmp)$/", $img["type"])){ //verifica se o arquivo passado é uma imagem.
                     $_SESSION['msg'] = true;
@@ -88,17 +88,16 @@
                     if($con->query($query) ==  TRUE){
                         echo "Alterado com sucesso";
                         header('Location: index.php');
-                    }else {
-                        echo "Error: " . $query . "<br>" . $con->error;
                     }
+                    //else { echo "Error: " . $query . "<br>" . $con->error; }
         
-                    $con->close();
+                    $con->close(); // fecha a conexão com o bd.
                 }
             }
-            
         } catch (Exception $e) {
             echo 'Exceção capturada: ',  $e->getMessage(), "\n";
         }
+
         if(count($error) != 0){
             foreach ($error as $erro) {
                 echo $erro . "<br />";
@@ -107,6 +106,6 @@
             header('Location: index.php');
         }
     }else{
-        header('Location: ../../');
+        header('Location: ../../'); // manda pra home.
     }
 ?>

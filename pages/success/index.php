@@ -9,11 +9,10 @@
   <link rel="stylesheet" href="../../global.css">
   <link rel="stylesheet" href="styles.css">
   <?php 
-    session_start();
-    if(isset($_SESSION['user'])){
-
+    session_start(); // inicia a sessão.
+    if(isset($_SESSION['user'])){ // verifica se o usuario existe na sessão.
     }else{
-      header('Location: ../login');
+      header('Location: ../login'); // manda para o login.
     }
   ?>
 </head>

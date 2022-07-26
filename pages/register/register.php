@@ -1,10 +1,6 @@
 <?php
-    //pronto
     $con = mysqli_connect("localhost", "root", "", "ecommerce");
-
-    if(mysqli_connect_errno()){
-        echo "Erro :" .mysqli_connect_error();
-    }
+    if(mysqli_connect_errno()){ echo "Erro :" .mysqli_connect_error(); }
 
     $nome = filter_input(INPUT_POST, "nome", FILTER_DEFAULT); // sempre usar filter --> mais indicado.
     $email = filter_input(INPUT_POST, "email", FILTER_DEFAULT); // sempre usar filter --> mais indicado.

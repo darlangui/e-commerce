@@ -1,16 +1,12 @@
 <?php 
-  session_start();
-  if(isset($_SESSION['user'])){
+  session_start(); // inicia a sessão.
+  if(isset($_SESSION['user'])){ // verifica se o usuário tem uma sessão.
     $con = mysqli_connect("localhost", "root", "", "ecommerce");
-
-    if(mysqli_connect_errno()){
-        echo "Erro :" .mysqli_connect_error();
-    }
+    if(mysqli_connect_errno()){ echo "Erro :" .mysqli_connect_error(); }
   }else{
-    header('Location: ../login');
+    header('Location: ../login'); // manda o usuario para o login.
   }
 ?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -41,8 +37,8 @@
         <h2>Carrinho</h2>
         <div class="products">
         <?php
-          $total = 0;
-          $prom = 0;
+          $total = 0; $prom = 0; // inicia as variaveis aux.
+          
           $query = "SELECT * FROM cart WHERE user_id = {$_SESSION['id']}";
           $result = $con->query($query);
           while($row = mysqli_fetch_assoc($result)){
@@ -73,9 +69,11 @@
       <section class="right">
         <div class="top">
           <div class="line">
+            
             <span>Produtos</span>
   
             <strong>R$ <?php echo $total; ?></strong>
+
           </div>
   
           <div class="line">
