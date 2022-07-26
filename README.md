@@ -44,10 +44,10 @@ Lembrando que para entrar no sistema como administrador é necessario inserir o 
 
 <h2> ✔️ Técnicas e tecnologias utilizadas </h2>
    
-    * PHP 8.0.21
-    * XAMMP 3.3.0
-    * CSS3
-    * HTML5
+    * PHP 8.0.21 *
+    * XAMMP 3.3.0 * 
+    * CSS3 *
+    * HTML5 *
 
 
 
