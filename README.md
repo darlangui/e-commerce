@@ -51,8 +51,11 @@ Lembrando que para entrar no sistema como administrador é necessario inserir o 
 </ul> 
 
 <h2> Autores <h2>
-| [<img src="https://user-images.githubusercontent.com/71740181/180896442-d923e9fc-c18f-4b09-864a-5a13d046c264.png" width=115><br><sub>Darlan Eduardo Guimarães Santos</sub>](https://github.com/darlangui) |  [<img src="https://user-images.githubusercontent.com/71740181/180896283-e0dfe06b-44fb-4245-aa48-372b153950ae.png" width=115><br><sub>Guilherme Ulbriki(https://github.com/guilhermeulbriki) | 
-| :---: | :---: |
+<img src="https://user-images.githubusercontent.com/71740181/180896442-d923e9fc-c18f-4b09-864a-5a13d046c264.png" width=115> 
+<img src="https://user-images.githubusercontent.com/71740181/180896283-e0dfe06b-44fb-4245-aa48-372b153950ae.png" width=115> 
+<br><br>
+<a href="https://github.com/darlangui"> Darlan Eduardo Guimarães </a> 
+<a href="https://github.com/guilhermeulbriki"> Guilherme Ulbriki </a>
   
 <h2> Licença <h2>
 
