@@ -46,7 +46,7 @@ Lembrando que para entrar no sistema como administrador é necessario inserir o 
 
 
 - `PHP 8.0.21`
-- `XAMMP 3.3.0`
+- `ECMAScript 2018`
 - `CSS3`
 - `HTML5`
 - `MySQL 8.0`
