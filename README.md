@@ -42,5 +42,12 @@ Após baixar o projeto, você devera importar a base de dados arquivo <a href="h
 
 Lembrando que para entrar no sistema como administrador é necessario inserir o mesmo diretamente na base de dados e usuários comuns devem ser cadastrados diretamento na aplicação.
 
+<h2> ✔️ Técnicas e tecnologias utilizadas </h2>
+   
+    PHP 8.0.21
+    XAMMP 3.3.0
+    CSS3
+    HTML5
+
 
 
