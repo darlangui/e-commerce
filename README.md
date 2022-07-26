@@ -49,11 +49,11 @@ Lembrando que para entrar no sistema como administrador é necessario inserir o 
     <li> CSS3 </li> 
     <li> HTML5 </li> 
 </ul> 
-![image]()
+
 
 ## Autores
 
-| [<img src="https://user-images.githubusercontent.com/71740181/180897012-2d7683f3-afd4-418f-a838-234ee686ee4c.png" width=115><br><sub>Darlan Eduardo Guimarães Santos</sub>](https://github.com/darlangui) |  [<img src="https://avatars.githubusercontent.com/u/30351153?v=4" width=115><br><sub>Guilherme Ulbriki</sub>](https://github.com/guilhermeulbriki)  |
+| [<img src="https://user-images.githubusercontent.com/71740181/180897012-2d7683f3-afd4-418f-a838-234ee686ee4c.png" width=115><br><sub>Darlan Eduardo Guimarães Santos</sub>](https://github.com/darlangui) |  [<img src="https://user-images.githubusercontent.com/71740181/180897084-1460c5ab-ff67-4db9-86c0-aba3d7218e28.png" width=115><br><sub>Guilherme Ulbriki</sub>](https://github.com/guilhermeulbriki)  |
 | :---: | :---: | 
  
 <h2> Licença <h2>
