@@ -17,6 +17,11 @@ Aplicação Web simulando um e-commerce para aferir o conhecimento na linguagem 
 ## :hammer: Funcionalidades do projeto 
 
 - `Registro e Login Autenticado`: Registro de usuário com email e senha requerindo algumas informações para a conta e Login autenticando os usuários já cadastradas na base de dados.
+
+
+https://user-images.githubusercontent.com/71740181/181081219-c9bd0c99-7428-4a19-baf7-21d51b345648.mov
+
+
 - `Compras e Finalização das compras`: Compras de produtos e Finalização dessas compras removendo as do carrinho de compras.
 - `Criar, Alterar e Excluir produtos`: Cadastro, alteração e exclusão de produtos em que usuários comuns irão optar por comprar.
 
