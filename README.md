@@ -52,7 +52,7 @@ Lembrando que para entrar no sistema como administrador é necessario inserir o 
 
 ## Autores
 
-| [<img src="https://avatars.githubusercontent.com/u/37356058?v=4" width=115><br><sub>Camila Fernanda Alves</sub>](https://github.com/camilafernanda) |  [<img src="https://avatars.githubusercontent.com/u/30351153?v=4" width=115><br><sub>Guilherme Lima</sub>](https://github.com/guilhermeonrails)  |
+| [<img src="https://avatars.githubusercontent.com/u/37356058?v=4" width=115><br><sub>Darlan Eduardo Guimarães Santos</sub>](https://github.com/camilafernanda) |  [<img src="https://avatars.githubusercontent.com/u/30351153?v=4" width=115><br><sub>Guilherme Lima</sub>](https://github.com/guilhermeonrails)  |
 | :---: | :---: | 
  
 <h2> Licença <h2>
