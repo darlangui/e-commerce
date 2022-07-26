@@ -44,11 +44,6 @@ Lembrando que para entrar no sistema como administrador é necessario inserir o 
 
 ## ✔️ Técnicas e tecnologias utilizadas
 
-    
-- `Registro e Login Autenticado`: Registro de usuário com email e senha requerindo algumas informações para a conta e Login autenticando os usuários já cadastradas na base de dados.
-- `Compras e Finalização das compras`: Compras de produtos e Finalização dessas compras removendo as do carrinho de compras.
-- `Criar, Alterar e Excluir produtos`: Cadastro, alteração e exclusão de produtos em que usuários comuns irão optar por comprar.
-
     - `PHP 8.0.21`
     - `XAMMP 3.3.0`
     - `MySQL 8.0` 
