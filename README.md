@@ -50,12 +50,10 @@ Lembrando que para entrar no sistema como administrador é necessario inserir o 
     <li> HTML5 </li> 
 </ul> 
 
-<h2> Autores <h2>
-<img src="https://user-images.githubusercontent.com/71740181/180896442-d923e9fc-c18f-4b09-864a-5a13d046c264.png" width=115> |
-<img src="https://user-images.githubusercontent.com/71740181/180896283-e0dfe06b-44fb-4245-aa48-372b153950ae.png" width=115> 
-<br><br>
-    <p3> <a href="https://github.com/darlangui"> Darlan Eduardo Guimarães </a> </p3> |
-    <p3> <a href="https://github.com/guilhermeulbriki"> Guilherme Ulbriki </a> </p3>
+## Autores
+
+| [<img src="https://avatars.githubusercontent.com/u/37356058?v=4" width=115><br><sub>Camila Fernanda Alves</sub>](https://github.com/camilafernanda) |  [<img src="https://avatars.githubusercontent.com/u/30351153?v=4" width=115><br><sub>Guilherme Lima</sub>](https://github.com/guilhermeonrails) |  [<img src="https://avatars.githubusercontent.com/u/8989346?v=4" width=115><br><sub>Alex Felipe</sub>](https://github.com/alexfelipe) |
+| :---: | :---: | :---: |
   
 <h2> Licença <h2>
 
