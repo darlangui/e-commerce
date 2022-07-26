@@ -44,11 +44,13 @@ Lembrando que para entrar no sistema como administrador é necessario inserir o 
 
 ## ✔️ Técnicas e tecnologias utilizadas
 
-    - `PHP 8.0.21`
-    - `XAMMP 3.3.0`
-    - `MySQL 8.0` 
-    - `CSS3` 
-    - `HTML5`  
+
+- `PHP 8.0.21`
+- `XAMMP 3.3.0`
+- `CSS3`
+- `HTML5`
+- `MySQL 8.0`
+     
 
 ## Autores
 
